@@ -281,7 +281,7 @@ class SignIn extends StatelessWidget {
                       Get.to(Login());
                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
                     },
-                    child: Text("Sign In",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14.sp,color: Color(0xffF6800D)),),
+                    child: Text("Sign Up",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14.sp,color: Color(0xffF6800D)),),
                   )
                 ],
               ),
