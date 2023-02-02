@@ -1,27 +1,41 @@
 
 import 'package:equatable/equatable.dart';
 
-class Video extends Equatable{
-  final String videoUrl;
-  final int videoPrice;
-  final String videoCaption;
-  final int videoLikes;
+class Content extends Equatable{
+  final int userId;
+  final String contentUrl;
+  final int contentPrice;
+  final String contentCaption;
+  final int contentLikes;
   final String shareableLink;
-  
-  const Video({
-    required this.videoUrl,
-    required this.videoPrice,
-    required this.videoCaption,
+  final bool isVideo;
+
+  const Content({
+    required this.userId,
+    required this.contentUrl,
+    required this.contentPrice,
+    required this.contentCaption,
     required this.shareableLink,
-    required this.videoLikes
+    required this.contentLikes,
+    required this.isVideo
   });
+
+  static List<Content> items = [
+    Content(contentUrl: "contentUrl", contentPrice: 100, contentCaption: "Hello", shareableLink: "shareableLink", contentLikes: 2, isVideo: true, userId: 1),
+    Content(contentUrl: "contentUrl", contentPrice: 100, contentCaption: "Hello", shareableLink: "shareableLink", contentLikes: 2, isVideo: true, userId: 1),
+    Content(contentUrl: "contentUrl", contentPrice: 100, contentCaption: "Hello", shareableLink: "shareableLink", contentLikes: 2, isVideo: true, userId: 2),
+    Content(contentUrl: "contentUrl", contentPrice: 100, contentCaption: "Hello", shareableLink: "shareableLink", contentLikes: 2, isVideo: true, userId: 2),
+    Content(contentUrl: "contentUrl", contentPrice: 100, contentCaption: "Hello", shareableLink: "shareableLink", contentLikes: 2, isVideo: true, userId: 3),
+    Content(contentUrl: "contentUrl", contentPrice: 100, contentCaption: "Hello", shareableLink: "shareableLink", contentLikes: 2, isVideo: true, userId: 3)
+  ];
 
   @override
   List<Object?> get props => [
-        videoUrl,
-        videoPrice,
-        videoCaption,
+        contentUrl,
+        contentPrice,
+        contentCaption,
         shareableLink,
-        videoLikes
+        contentLikes,
+        isVideo
       ];
 }
