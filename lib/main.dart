@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-import 'authentication/view/login.dart';
 import 'authentication/view/sign_in.dart';
 
 void main() {
