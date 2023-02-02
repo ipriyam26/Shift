@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:money_goes_brr/authentication/view/sign_in.dart';
 // import 'package:waste_not/screens/presentation/signup.dart';
 
 import '../controller/login_controller.dart';
@@ -78,6 +79,7 @@ class Login extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.sp),
                 child: TextFormField(
+                  obscureText: true,
                   textAlign: TextAlign.left,
                   keyboardType: TextInputType.text,
                   onFieldSubmitted: (value) {},
@@ -273,6 +275,7 @@ class Login extends StatelessWidget {
                   SizedBox(width: 5.w,),
                   GestureDetector(
                     onTap: (){
+                      Get.to(SignIn());
                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
                     },
                     child: Text("Sign Up",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14.sp,color: Color(0xffF6800D)),),
@@ -285,6 +288,30 @@ class Login extends StatelessWidget {
         ),
       ),
 
+    );
+  }
+}
+
+class PasswordTextField extends StatelessWidget {
+  final bool obscureText;
+  final void Function(bool) onObscureTextToggled;
+
+  const PasswordTextField({super.key,
+    required this.obscureText,
+    required this.onObscureTextToggled,
+  }) ;
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return TextFormField(
+      obscureText: obscureText,
+      decoration: InputDecoration(
+        suffixIcon: IconButton(
+          icon: Icon(obscureText ? Icons.visibility_off : Icons.visibility),
+          onPressed: () => onObscureTextToggled(!obscureText),
+        ),
+      ),
     );
   }
 }
