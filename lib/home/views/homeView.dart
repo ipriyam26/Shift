@@ -12,10 +12,11 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Obx((){
+      body: Obx(() {
         return PageView.builder(
-          // itemCount: ,
-          itemBuilder: (content,index){
+            // itemCount: ,
+            itemBuilder: (content, index) {
+
         });
       }),
     );
