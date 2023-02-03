@@ -57,7 +57,7 @@ class SignIn extends StatelessWidget {
 
                     hintText: 'Email or Username ',
                     hintStyle: TextStyle(
-                      color: Color(0xff707070),
+                      color: const Color(0xff707070),
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400,
                     ),
@@ -96,7 +96,7 @@ class SignIn extends StatelessWidget {
                   },
                   decoration: InputDecoration(
                     hintStyle: TextStyle(
-                      color: Color(0xff707070),
+                      color: const Color(0xff707070),
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400,
                     ),
@@ -126,12 +126,12 @@ class SignIn extends StatelessWidget {
                     child: RichText(
 
                       textAlign: TextAlign.center,
-                      text: TextSpan(
+                      text: const TextSpan(
 
                         children: <TextSpan>[
-                           const TextSpan(text: 'By selecting Signup below, I agree to '),
+                           TextSpan(text: 'By selecting Signup below, I agree to '),
 
-                           const TextSpan(text: 'Terms & \ncondition.', style:  TextStyle(fontWeight: FontWeight.bold,color: Color(0xfff6800D))),
+                           TextSpan(text: 'Terms & \ncondition.', style:  TextStyle(fontWeight: FontWeight.bold,color: Color(0xfff6800D))),
                         ],
                       ),
                   ),
@@ -196,14 +196,14 @@ class SignIn extends StatelessWidget {
               Container(
                 child: Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Divider(
                         thickness: 1,
                         color: Color(0xffA7998B),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: Text(
                         "or",
                         style: TextStyle(
@@ -213,7 +213,7 @@ class SignIn extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                       child: Divider(
                         thickness: 1,
                         color: Color(0xffA7998B),
@@ -236,35 +236,33 @@ class SignIn extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
+                    height: 44.h,
+                    width: 44.w,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(8.sp))),
                     child: Image.asset("assets/apple.png"),
 
+                  ),
+                  Container(
                     height: 44.h,
                     width: 44.w,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius:
                         BorderRadius.all(Radius.circular(8.sp))),
-
-                  ),
-                  Container(
                     child: Image.asset("assets/google.png"),
-                    height: 44.h,
-                    width: 44.w,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(8.sp))),
 
                   ),
                   Container(
-                    child: Image.asset("assets/fb.png"),
-
                     height: 44.h,
                     width: 44.w,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius:
                         BorderRadius.all(Radius.circular(8.sp))),
+                    child: Image.asset("assets/fb.png"),
 
                   ),
 
@@ -281,7 +279,7 @@ class SignIn extends StatelessWidget {
                       Get.to(Login());
                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
                     },
-                    child: Text("Sign In",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14.sp,color: Color(0xffF6800D)),),
+                    child: Text("Sign In",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14.sp,color: const Color(0xffF6800D)),),
                   )
                 ],
               ),

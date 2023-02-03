@@ -57,7 +57,7 @@ class Login extends StatelessWidget {
 
                     hintText: 'Email or Username ',
                     hintStyle: TextStyle(
-                      color: Color(0xff707070),
+                      color: const Color(0xff707070),
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400,
                     ),
@@ -96,7 +96,7 @@ class Login extends StatelessWidget {
                   },
                   decoration: InputDecoration(
                     hintStyle: TextStyle(
-                      color: Color(0xff707070),
+                      color: const Color(0xff707070),
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w400,
                     ),
@@ -193,14 +193,14 @@ class Login extends StatelessWidget {
               Container(
                 child: Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: Divider(
                         thickness: 1,
                         color: Color(0xffA7998B),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: Text(
                         "or",
                         style: TextStyle(
@@ -210,7 +210,7 @@ class Login extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                       child: Divider(
                         thickness: 1,
                         color: Color(0xffA7998B),
@@ -233,35 +233,33 @@ class Login extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
+                    height: 44.h,
+                    width: 44.w,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(8.sp))),
                     child: Image.asset("assets/apple.png"),
 
+                  ),
+                  Container(
                     height: 44.h,
                     width: 44.w,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius:
                         BorderRadius.all(Radius.circular(8.sp))),
-
-                  ),
-                  Container(
                     child: Image.asset("assets/google.png"),
-                    height: 44.h,
-                    width: 44.w,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(8.sp))),
 
                   ),
                   Container(
-                    child: Image.asset("assets/fb.png"),
-
                     height: 44.h,
                     width: 44.w,
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius:
                         BorderRadius.all(Radius.circular(8.sp))),
+                    child: Image.asset("assets/fb.png"),
 
                   ),
 
@@ -278,7 +276,7 @@ class Login extends StatelessWidget {
                       Get.to(SignIn());
                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
                     },
-                    child: Text("Sign Up",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14.sp,color: Color(0xffF6800D)),),
+                    child: Text("Sign Up",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14.sp,color: const Color(0xffF6800D)),),
                   )
                 ],
               ),

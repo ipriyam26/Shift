@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:money_goes_brr/widgets/graph-3.dart';
+import 'package:money_goes_brr/user/screen/user.dart';
 
-import 'authentication/view/login.dart';
 import 'authentication/view/sign_in.dart';
 
 void main() {
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
       builder: (context, a) {
         return  GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home:LineChartSample2(),
+          home: User(),
         );
       },
     );
