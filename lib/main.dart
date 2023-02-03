@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-
+import 'package:money_goes_brr/user/screen/balance.dart';
 import 'package:money_goes_brr/user/screen/user.dart';
-
-
 
 void main() {
   runApp(const MyApp());
@@ -21,12 +19,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, a) {
-        return  const GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: User(),
-        );
+        return const GetMaterialApp(
+            debugShowCheckedModeBanner: false, home: User());
       },
     );
   }
 }
-

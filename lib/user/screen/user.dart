@@ -476,21 +476,16 @@ class ProfilePicture extends StatelessWidget {
         padding: EdgeInsets.only(right: 1.w),
         color: const Color(0xffB548C6),
         child: ClipOval(
-          child: CachedNetworkImage(
-            height: 82.h,
-            width: 82.w,
-            imageUrl: "https://picsum.photos/250?image=9",
-            placeholder: (context, url) {
-              return Shimmer.fromColors(
-                baseColor: const Color(0xffB548C6),
-                highlightColor: const Color.fromARGB(255, 215, 79, 236),
-                child: SizedBox(
-                  height: 82.h,
-                  width: 82.w,
-                ),
+          child: GetX<UserController>(
+            builder: (controller) {
+              return CachedNetworkImage(
+                height: 82.h,
+                width: 82.w,
+                imageUrl: controller.user.value.imageUrl,
+                placeholder: (context, url) => const CircularProgressIndicator(),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               );
-            },
-            errorWidget: (context, url, error) => const Icon(Icons.error),
+            }
           ),
         ),
       ),

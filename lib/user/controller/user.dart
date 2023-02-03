@@ -20,8 +20,6 @@ class UserController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
-
     List<String> ownedList = [
       'https://images.unsplash.com/photo-1486010586814-abd061e90cf9',
       'https://images.unsplash.com/photo-1497752531616-c3afd9760a11',
@@ -71,6 +69,8 @@ class UserController extends GetxController {
       var t = Random().nextInt(10);
 
       return Post(
+        userId: Random().nextInt(100000).toString(),
+        postId: Random().nextInt(100000).toString(),
         postThumbnail: e,
         postUrl: e,
         postPrice: 0.0,
@@ -87,6 +87,8 @@ class UserController extends GetxController {
       var t = Random().nextInt(10);
 
       return Post(
+        userId: Random().nextInt(100000).toString(),
+        postId: Random().nextInt(100000).toString(),
         postThumbnail: e,
         postUrl: e,
         postPrice: 0.0,
@@ -103,6 +105,8 @@ class UserController extends GetxController {
       var t = Random().nextInt(10);
 
       return Post(
+        userId: Random().nextInt(100000).toString(),
+        postId: Random().nextInt(100000).toString(),
         postThumbnail: e,
         postUrl: e,
         postPrice: 0.0,
@@ -159,6 +163,8 @@ class UserController extends GetxController {
     user.update((val) {
       for (var i = 0; i < count; i++) {
         val!.saved.savedItems.add(Post(
+            userId: Random().nextInt(100000).toString(),
+            postId: Random().nextInt(100000).toString(),
             postThumbnail: "https://picsum.photos/200",
             postUrl: "https://picsum.photos/300",
             postPrice: 0.0,
@@ -176,6 +182,8 @@ class UserController extends GetxController {
     user.update((val) {
       for (var i = 0; i < count; i++) {
         val!.history.historyItems.add(Post(
+            userId: Random().nextInt(100000).toString(),
+            postId: Random().nextInt(100000).toString(),
             postThumbnail: "https://picsum.photos/200",
             postUrl: "https://picsum.photos/200",
             postPrice: 0.0,
@@ -193,6 +201,8 @@ class UserController extends GetxController {
     user.update((val) {
       for (var i = 0; i < count; i++) {
         val!.currentOwned.currentOwnedItems.add(Post(
+            userId: Random().nextInt(100000).toString(),
+            postId: Random().nextInt(100000).toString(),
             postUrl: "https://picsum.photos/200",
             postThumbnail: "https://picsum.photos/200",
             postPrice: 0.0,

@@ -1,19 +1,23 @@
 import 'package:equatable/equatable.dart';
 
 class Post extends Equatable {
+  final String postId;
+  final String userId;
   final String postUrl;
   final double postPrice;
   final String? postCaption;
   final int postLikes;
   final String shareableLink;
-  final String? postOwner;
   final DateTime? postDate;
   final PostType postType;
   final String postThumbnail;
+  final String? postOwner;
 
   const Post({
-    required this.postThumbnail,
     required this.postOwner,
+    required this.postThumbnail,
+    required this.postId,
+    required this.userId,
     required this.postUrl,
     required this.postPrice,
     required this.postCaption,
@@ -30,8 +34,10 @@ class Post extends Equatable {
         postCaption,
         shareableLink,
         postLikes,
-        postOwner,
-        postThumbnail
+        postId,
+        userId,
+        postThumbnail,
+        postOwner
       ];
 }
 
