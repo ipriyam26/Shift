@@ -39,6 +39,7 @@ dependencies:
   flutter_screenutil: ^5.6.1
   google_fonts: ^4.0.1
   image_picker: ^0.8.6+1
+  fl_chart: ^0.60.0
   get: ^4.6.5
 
   equatable: ^2.0.3
