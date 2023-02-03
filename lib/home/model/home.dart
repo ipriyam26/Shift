@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:money_goes_brr/home/model/videoModel.dart';
+import 'package:money_goes_brr/home/model/post.dart';
 
 class HomeModel extends Equatable{
-  final List<Video> contentUrl;
+  final List<Post> contentUrl;
   final String userName;
   final String userprofileUrl;
   final String userGenere;
