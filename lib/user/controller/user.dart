@@ -19,24 +19,26 @@ class UserController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
     user.value = const User(
         id: "132fwefsdf24f",
         name: "John Doe",
         email: "john.doe@gmail.com",
         caption: "I am a software developer",
-        imageUrl: "https://picsum.photos/200",
+        imageUrl: "https://picsum.photos/300",
         profit: Profit(profit: 0, transactions: []),
         currentBalance: Balance(balance: 0.0, transactions: []),
         history: History(historyItems: []),
         currentOwned: CurrentOwned(currentOwnedItems: []),
         saved: Saved(savedItems: []));
+    update();
   }
 
   void getMoreSaved(int count) {
     user.update((val) {
       for (var i = 0; i < count; i++) {
         val!.saved.savedItems.add(const Post(
-            postUrl: "https://picsum.photos/200",
+            postUrl: "https://picsum.photos/300",
             postPrice: 0.0,
             postCaption: "I am a software developer",
             postLikes: 0,
@@ -97,7 +99,5 @@ class UserController extends GetxController {
 //       }
 //     });
 //   }
-
-
 
 }
