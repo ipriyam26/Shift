@@ -1,6 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LineChartSample2 extends StatefulWidget {
   const LineChartSample2({super.key});
@@ -11,8 +10,8 @@ class LineChartSample2 extends StatefulWidget {
 
 class _LineChartSample2State extends State<LineChartSample2> {
   List<Color> gradientColors = [
-    Color(0xffB548C6),
-    Color(0xff161819),
+    const Color(0xffB548C6),
+    const Color(0xff161819),
   ];
 
   bool showAvg = false;
