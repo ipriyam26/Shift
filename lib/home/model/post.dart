@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 class Post extends Equatable {
+  final int postId;
+  final int userId;
   final String postUrl;
   final double postPrice;
   final String? postCaption;
@@ -10,6 +12,8 @@ class Post extends Equatable {
   final PostType postType;
 
   const Post({
+    this.postId = 0,
+    this.userId = 0,
     required this.postUrl,
     required this.postPrice,
     required this.postCaption,
@@ -20,7 +24,7 @@ class Post extends Equatable {
 
   @override
   List<Object?> get props =>
-      [postUrl, postPrice, postCaption, shareableLink, postLikes];
+      [postUrl, postPrice, postCaption, shareableLink, postLikes,postId,userId];
 }
 
 enum PostType {

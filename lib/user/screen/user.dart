@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:money_goes_brr/user/controller/user.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class User extends StatelessWidget {
   User({super.key});
@@ -69,7 +68,7 @@ class User extends StatelessWidget {
           const PurchaseDetails(),
           const BalanceProfit(),
           const Line(),
-          Container(
+          SizedBox(
             height: 420.h,
             child: DefaultTabController(
                 length: 3,
@@ -137,7 +136,7 @@ class TabView extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Container(
             padding: EdgeInsets.all(5.w),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             child: Stack(alignment: Alignment.bottomRight, children: [
@@ -393,7 +392,7 @@ class Header extends StatelessWidget {
             children:  [
               ProfilePicture(),
               NameCaption(),
-              EditProfile(),
+              const EditProfile(),
             ]));
   }
 }
