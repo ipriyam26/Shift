@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:get/get.dart';
 import 'package:money_goes_brr/home/model/post.dart';
 
@@ -66,51 +68,86 @@ class UserController extends GetxController {
     ];
 
     List<Post> savedItems = savedList.map((e) {
+      var t = Random().nextInt(10);
+
       return Post(
+        postThumbnail: e,
         postUrl: e,
         postPrice: 0.0,
         postCaption: "I am a software developer",
         postOwner: "John Doe",
         postDate: DateTime.now(),
         postLikes: 5,
-        postType: PostType.image,
+        postType: t % 2 == 0 ? PostType.image : PostType.video,
         shareableLink: "",
       );
     }).toList();
 
     List<Post> ownedItems = ownedList.map((e) {
+      var t = Random().nextInt(10);
+
       return Post(
+        postThumbnail: e,
         postUrl: e,
         postPrice: 0.0,
         postCaption: "I am a software developer",
         postOwner: "John Doe",
         postDate: DateTime.now(),
         postLikes: 5,
-        postType: PostType.image,
+        postType: t % 2 == 0 ? PostType.image : PostType.video,
         shareableLink: "",
       );
     }).toList();
 
     List<Post> historyItems = historyList.map((e) {
+      var t = Random().nextInt(10);
+
       return Post(
+        postThumbnail: e,
         postUrl: e,
         postPrice: 0.0,
         postCaption: "I am a software developer",
         postOwner: "John Doe",
         postDate: DateTime.now(),
         postLikes: 5,
-        postType: PostType.image,
+        postType: t % 2 == 0 ? PostType.image : PostType.video,
         shareableLink: "",
       );
     }).toList();
 
+    List<PostTransaction> postTransactions = historyItems.map((e) {
+      return PostTransaction(
+        post: e,
+        purchase: Transactions(
+          transactionId: Random().nextInt(100000).toString(),
+          transactionDate: DateTime.now(),
+          transactionAmount: Random().nextInt(200).toDouble(),
+          transactionType: TransactionType.bought,
+        ),
+        sale: Transactions(
+          transactionId: Random().nextInt(100000).toString(),
+          transactionDate: DateTime.now(),
+          transactionAmount: Random().nextInt(200).toDouble(),
+          transactionType: TransactionType.sold,
+        ),
+        isSold: true,
+      );
+    }).toList();
+// for each post transaction find profit or loss and add it all up
+
+    var profit = postTransactions.fold(0.0, (previousValue, element) {
+      var profit =
+          element.sale.transactionAmount - element.purchase.transactionAmount;
+      return previousValue + profit;
+    });
+    print("Profit $profit");
     user.value = User(
         id: "132fwefsdf24f",
         name: "John Doe",
         email: "john.doe@gmail.com",
         caption: "I am a software developer",
         imageUrl: "https://picsum.photos/300",
-        profit: const Profit(profit: 0, transactions: []),
+        profit: Profit(profit: profit, transactions: postTransactions),
         currentBalance: const Balance(balance: 0.0, transactions: []),
         history: History(historyItems: historyItems),
         currentOwned: CurrentOwned(currentOwnedItems: ownedItems),
@@ -122,6 +159,7 @@ class UserController extends GetxController {
     user.update((val) {
       for (var i = 0; i < count; i++) {
         val!.saved.savedItems.add(Post(
+            postThumbnail: "https://picsum.photos/200",
             postUrl: "https://picsum.photos/300",
             postPrice: 0.0,
             postCaption: "I am a software developer",
@@ -138,6 +176,7 @@ class UserController extends GetxController {
     user.update((val) {
       for (var i = 0; i < count; i++) {
         val!.history.historyItems.add(Post(
+            postThumbnail: "https://picsum.photos/200",
             postUrl: "https://picsum.photos/200",
             postPrice: 0.0,
             postCaption: "I am a software developer",
@@ -155,6 +194,7 @@ class UserController extends GetxController {
       for (var i = 0; i < count; i++) {
         val!.currentOwned.currentOwnedItems.add(Post(
             postUrl: "https://picsum.photos/200",
+            postThumbnail: "https://picsum.photos/200",
             postPrice: 0.0,
             postCaption: "I am a software developer",
             postLikes: 0,

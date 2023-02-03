@@ -9,8 +9,10 @@ class Post extends Equatable {
   final String? postOwner;
   final DateTime? postDate;
   final PostType postType;
+  final String postThumbnail;
 
   const Post({
+    required this.postThumbnail,
     required this.postOwner,
     required this.postUrl,
     required this.postPrice,
@@ -29,6 +31,7 @@ class Post extends Equatable {
         shareableLink,
         postLikes,
         postOwner,
+        postThumbnail
       ];
 }
 

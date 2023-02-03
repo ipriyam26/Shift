@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -7,11 +6,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:money_goes_brr/home/model/post.dart';
 import 'package:money_goes_brr/user/controller/user.dart';
+import 'package:money_goes_brr/user/screen/profit.dart';
 import 'package:shimmer/shimmer.dart';
 
 class User extends StatelessWidget {
-  User({super.key});
+  const User({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +113,7 @@ class TabView extends StatelessWidget {
               ? controller.user.value.currentOwned.currentOwnedItems
               : controller.user.value.saved.savedItems;
       return MasonryGridView.count(
-          padding: EdgeInsets.only(top: 0.0),
+          padding: const EdgeInsets.only(top: 0.0),
           shrinkWrap: true,
           crossAxisCount: 2,
           itemCount: data.length,
@@ -126,7 +127,7 @@ class TabView extends StatelessWidget {
                 ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                   child: CachedNetworkImage(
-                    imageUrl: data[index].postUrl,
+                    imageUrl: data[index].postThumbnail,
                     fit: BoxFit.cover,
                     placeholder: (context, url) => SizedBox(
                       width: 200.0.w,
@@ -144,6 +145,16 @@ class TabView extends StatelessWidget {
                         const Icon(Icons.error),
                   ),
                 ),
+                if (data[index].postType == PostType.video)
+                  Positioned(
+                    bottom: 5.h,
+                    left: 5.h,
+                    child: Icon(
+                      Icons.play_arrow,
+                      color: Colors.white,
+                      size: 30.sp,
+                    ),
+                  ),
                 Stack(
                   alignment: Alignment.centerLeft,
                   fit: StackFit.passthrough,
@@ -223,7 +234,9 @@ class BalanceProfit extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Get.to(() =>  Profit());
+              },
               child: ClickableDetails(
                 title: "Profit",
                 cost: userController.user.value.profit.profit,
@@ -387,7 +400,7 @@ class Header extends StatelessWidget {
                     name: controller.user.value.name,
                     caption: controller.user.value.caption,
                   ),
-                  EditProfile(),
+                  const EditProfile(),
                 ]);
           },
         ));
@@ -412,7 +425,7 @@ class EditProfile extends StatelessWidget {
 }
 
 class NameCaption extends StatelessWidget {
-  NameCaption({
+  const NameCaption({
     required this.name,
     required this.caption,
     Key? key,
@@ -451,7 +464,7 @@ class NameCaption extends StatelessWidget {
 }
 
 class ProfilePicture extends StatelessWidget {
-  ProfilePicture({
+  const ProfilePicture({
     required this.imageUrl,
     Key? key,
   }) : super(key: key);
@@ -471,7 +484,7 @@ class ProfilePicture extends StatelessWidget {
               return Shimmer.fromColors(
                 baseColor: const Color(0xffB548C6),
                 highlightColor: const Color.fromARGB(255, 215, 79, 236),
-                child: Container(
+                child: SizedBox(
                   height: 82.h,
                   width: 82.w,
                 ),
