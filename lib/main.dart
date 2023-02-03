@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:money_goes_brr/user/screen/edit.dart';
 
 import 'package:money_goes_brr/user/screen/user.dart';
 
@@ -24,7 +25,11 @@ class MyApp extends StatelessWidget {
       builder: (context, a) {
         return  GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: User(),
+          home: EditScreen(
+
+
+
+          ),
         );
       },
     );

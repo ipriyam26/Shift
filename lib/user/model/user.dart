@@ -6,6 +6,7 @@ class User {
   final String caption;
   final String imageUrl;
   final Profit profit;
+
   final Balance currentBalance;
   final History history;
   final CurrentOwned currentOwned;
@@ -41,7 +42,6 @@ class CurrentOwned {
     required this.currentOwnedItems,
   });
 }
-
 class History {
   final List<Post> historyItems;
 

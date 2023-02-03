@@ -18,7 +18,6 @@ class UserController extends GetxController {
 
   @override
   void onInit() {
-    super.onInit();
 
     user.value = const User(
         id: "132fwefsdf24f",
@@ -31,7 +30,9 @@ class UserController extends GetxController {
         history: History(historyItems: []),
         currentOwned: CurrentOwned(currentOwnedItems: []),
         saved: Saved(savedItems: []));
-    update();
+    // update();
+    super.onInit();
+
   }
 
   void getMoreSaved(int count) {
