@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:money_goes_brr/user/controller/user.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class User extends StatelessWidget {
   User({super.key});
@@ -69,7 +68,7 @@ class User extends StatelessWidget {
           const PurchaseDetails(),
           const BalanceProfit(),
           const Line(),
-          Container(
+          SizedBox(
             height: 420.h,
             child: DefaultTabController(
                 length: 3,
@@ -137,7 +136,7 @@ class TabView extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Container(
             padding: EdgeInsets.all(5.w),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Colors.transparent,
                 borderRadius: BorderRadius.all(Radius.circular(15))),
             child: Stack(alignment: Alignment.bottomRight, children: [
@@ -303,7 +302,7 @@ class PurchaseDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60.h,
+      height: 62.h,
       margin: EdgeInsets.only(top: 28.h, left: 52.w, right: 52.w, bottom: 20.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -390,10 +389,10 @@ class Header extends StatelessWidget {
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            children:  [
               ProfilePicture(),
               NameCaption(),
-              EditProfile(),
+              const EditProfile(),
             ]));
   }
 }
@@ -416,46 +415,53 @@ class EditProfile extends StatelessWidget {
 }
 
 class NameCaption extends StatelessWidget {
-  const NameCaption({
+   NameCaption({
     Key? key,
   }) : super(key: key);
 
+  UserController userController = Get.put(UserController());
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60.h,
-      width: 165.w,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Text("User Name",
-              style: TextStyle(
-                fontFamily: GoogleFonts.roboto().fontFamily,
-                fontStyle: GoogleFonts.roboto().fontStyle,
-                color: Colors.white,
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w500,
-              )),
-          Text("Caption",
-              style: TextStyle(
-                fontFamily: GoogleFonts.roboto().fontFamily,
-                fontStyle: GoogleFonts.roboto().fontStyle,
-                color: Colors.white,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-              )),
-        ],
-      ),
+    return GetX<UserController>(
+      builder: (controller) {
+        return SizedBox(
+          height: 60.h,
+          width: 165.w,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(controller.user.value.name,
+                  style: TextStyle(
+                    fontFamily: GoogleFonts.roboto().fontFamily,
+                    fontStyle: GoogleFonts.roboto().fontStyle,
+                    color: Colors.white,
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w500,
+                  )),
+              Text(controller.user.value.caption,
+                  style: TextStyle(
+                    fontFamily: GoogleFonts.roboto().fontFamily,
+                    fontStyle: GoogleFonts.roboto().fontStyle,
+                    color: Colors.white,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                  )),
+            ],
+          ),
+        );
+      }
     );
   }
 }
 
 class ProfilePicture extends StatelessWidget {
-  const ProfilePicture({
+   ProfilePicture({
     Key? key,
   }) : super(key: key);
 
+  final UserController user = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     return ClipOval(
@@ -463,12 +469,16 @@ class ProfilePicture extends StatelessWidget {
         padding: EdgeInsets.only(right: 1.w),
         color: const Color(0xffB548C6),
         child: ClipOval(
-          child: CachedNetworkImage(
-            height: 82.h,
-            width: 82.w,
-            imageUrl: "https://picsum.photos/250?image=9",
-            placeholder: (context, url) => const CircularProgressIndicator(),
-            errorWidget: (context, url, error) => const Icon(Icons.error),
+          child: GetX<UserController>(
+            builder: (controller) {
+              return CachedNetworkImage(
+                height: 82.h,
+                width: 82.w,
+                imageUrl: controller.user.value.imageUrl,
+                placeholder: (context, url) => const CircularProgressIndicator(),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              );
+            }
           ),
         ),
       ),
