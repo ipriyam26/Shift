@@ -1,11 +1,15 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:money_goes_brr/constant.dart';
 import 'package:video_compress/video_compress.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class AddController extends GetxController {
+  var _imagepicker = ImagePicker();
   Future<String> uploadVideo(File video) async {
     var request =
         http.MultipartRequest(Constants().post, Uri.parse(Constants().posturl));
@@ -23,6 +27,44 @@ class AddController extends GetxController {
     // print(Constants().baseurl + data["id"] + Constants().ext);
     return Constants().baseurl + data["id"] + Constants().videoExt;
     // idList.add(data["id"]);
+  }
+
+  Future<File?> pickimagefromgallery() async {
+    if (!await Permission.storage.isGranted) {
+      await Permission.storage.request();
+      Get.snackbar("Error", "No permission granted",
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
+      return null;
+    }
+    final pickedFile = await _imagepicker.pickImage(
+        source: ImageSource.gallery, imageQuality: 25);
+
+    if (pickedFile == null) {
+      Get.snackbar("Error", "No image selected",
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
+      return null;
+    }
+    return File(pickedFile.path);
+  }
+
+  Future<File?> pickvideofromgallery() async {
+    if (!await Permission.storage.isGranted) {
+      await Permission.storage.request();
+      Get.snackbar("Error", "No permission granted",
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
+      return null;
+    }
+
+    final pickedFile = await _imagepicker.pickVideo(
+        source: ImageSource.gallery, maxDuration: Duration(seconds: 30));
+
+    if (pickedFile == null) {
+      Get.snackbar("Error", "No image selected",
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
+      return null;
+    }
+    print(pickedFile.path);
+    return File(pickedFile.path);
   }
 
   Future<String> uploadImage(File image) async {
