@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:money_goes_brr/user/model/user.dart';
 
 class Post extends Equatable {
   final String postId;
@@ -12,8 +13,10 @@ class Post extends Equatable {
   final PostType postType;
   final String postThumbnail;
   final String? postOwner;
+  final List<Transactions>? transactions;
 
   const Post({
+    required this.transactions,
     required this.postOwner,
     required this.postThumbnail,
     required this.postId,
@@ -27,7 +30,7 @@ class Post extends Equatable {
     required this.postDate,
   });
 
-  static List<Post> items =  [
+  static List<Post> items = [
     // Post(postUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", postPrice: 100, postCaption: "postCaption", shareableLink: "shareableLink", postLikes: 100, postType: PostType.video,postId: "1",userId: "1",
     // postOwner: "2",
     // postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"),
