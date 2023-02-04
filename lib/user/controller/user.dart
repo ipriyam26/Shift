@@ -80,6 +80,7 @@ class UserController extends GetxController {
         postLikes: 5,
         postType: t % 2 == 0 ? PostType.image : PostType.video,
         shareableLink: "",
+        transactions: [],
       );
     }).toList();
 
@@ -98,6 +99,7 @@ class UserController extends GetxController {
         postLikes: 5,
         postType: t % 2 == 0 ? PostType.image : PostType.video,
         shareableLink: "",
+        transactions: [],
       );
     }).toList();
 
@@ -116,6 +118,7 @@ class UserController extends GetxController {
         postLikes: 5,
         postType: t % 2 == 0 ? PostType.image : PostType.video,
         shareableLink: "",
+        transactions: [],
       );
     }).toList();
 
@@ -173,7 +176,8 @@ class UserController extends GetxController {
             shareableLink: "https://picsum.photos/200",
             postType: PostType.image,
             postDate: DateTime.now(),
-            postOwner: ''));
+            postOwner: '',
+            transactions: []));
       }
     });
   }
@@ -192,7 +196,8 @@ class UserController extends GetxController {
             shareableLink: "https://picsum.photos/200",
             postType: PostType.image,
             postDate: DateTime.now(),
-            postOwner: ''));
+            postOwner: '',
+            transactions: []));
       }
     });
   }
@@ -211,7 +216,8 @@ class UserController extends GetxController {
             shareableLink: "https://picsum.photos/200",
             postType: PostType.image,
             postDate: DateTime.now(),
-            postOwner: ''));
+            postOwner: '',
+            transactions: []));
       }
     });
   }
