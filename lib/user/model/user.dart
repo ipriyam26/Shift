@@ -78,7 +78,7 @@ class Transactions {
   final String transactionId;
 
   final double transactionAmount;
-  final String transactionDate;
+  final DateTime transactionDate;
   final TransactionType transactionType;
 
   const Transactions({
