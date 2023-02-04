@@ -1,4 +1,3 @@
-
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -235,7 +234,7 @@ class BalanceProfit extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Get.to(() =>  Profit());
+                Get.to(() => Profit());
               },
               child: ClickableDetails(
                 title: "Profit",
@@ -298,16 +297,39 @@ class PurchaseDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 60.h,
-        margin:
-            EdgeInsets.only(top: 28.h, left: 52.w, right: 52.w, bottom: 20.h),
+        margin: EdgeInsets.only(top: 28.h, left: 10.w, bottom: 20.h),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CurrentlyOwned(
                 count: controller
                     .user.value.currentOwned.currentOwnedItems.length),
             TotalPurchases(
                 count: controller.user.value.history.historyItems.length),
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                ClipOval(
+                  child: SizedBox(
+                    height: 60.h,
+                    width: 60.w,
+                    child: Image.asset(
+                      'assets/coin.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: -10,
+                  right: -10,
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                    size: 30.sp,
+                  ),
+                )
+              ],
+            )
           ],
         ));
   }
@@ -322,13 +344,14 @@ class TotalPurchases extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("Total Purchases",
             style: TextStyle(
               fontFamily: GoogleFonts.poppins().fontFamily,
               fontStyle: GoogleFonts.poppins().fontStyle,
               color: Colors.white,
-              fontSize: 15.sp,
+              fontSize: 13.sp,
               fontWeight: FontWeight.w500,
             )),
         Text(count.toString(),
@@ -336,7 +359,7 @@ class TotalPurchases extends StatelessWidget {
               fontFamily: GoogleFonts.poppins().fontFamily,
               fontStyle: GoogleFonts.poppins().fontStyle,
               color: const Color(0xffB548C6),
-              fontSize: 22.sp,
+              fontSize: 20.sp,
               fontWeight: FontWeight.w600,
             )),
       ],
@@ -353,13 +376,14 @@ class CurrentlyOwned extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("Currently Owned",
             style: TextStyle(
               fontFamily: GoogleFonts.poppins().fontFamily,
               fontStyle: GoogleFonts.poppins().fontStyle,
               color: Colors.white,
-              fontSize: 15.sp,
+              fontSize: 13.sp,
               fontWeight: FontWeight.w500,
             )),
         Text(count.toString(),
@@ -367,7 +391,7 @@ class CurrentlyOwned extends StatelessWidget {
               fontFamily: GoogleFonts.poppins().fontFamily,
               fontStyle: GoogleFonts.poppins().fontStyle,
               color: const Color(0xffB548C6),
-              fontSize: 22.sp,
+              fontSize: 20.sp,
               fontWeight: FontWeight.w600,
             )),
       ],
@@ -476,17 +500,15 @@ class ProfilePicture extends StatelessWidget {
         padding: EdgeInsets.only(right: 1.w),
         color: const Color(0xffB548C6),
         child: ClipOval(
-          child: GetX<UserController>(
-            builder: (controller) {
-              return CachedNetworkImage(
-                height: 82.h,
-                width: 82.w,
-                imageUrl: controller.user.value.imageUrl,
-                placeholder: (context, url) => const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              );
-            }
-          ),
+          child: GetX<UserController>(builder: (controller) {
+            return CachedNetworkImage(
+              height: 82.h,
+              width: 82.w,
+              imageUrl: controller.user.value.imageUrl,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            );
+          }),
         ),
       ),
     );
