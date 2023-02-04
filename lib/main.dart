@@ -6,9 +6,9 @@ import 'package:money_goes_brr/add/views/post.dart';
 
 import 'package:money_goes_brr/home/views/homeView.dart';
 
-import 'package:money_goes_brr/user/screen/balance.dart';
+import 'package:money_goes_brr/user/views/balance.dart';
 
-import 'package:money_goes_brr/user/screen/user.dart';
+import 'package:money_goes_brr/user/views/user.dart';
 
 void main() {
   runApp(const MyApp());

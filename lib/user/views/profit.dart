@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:money_goes_brr/home/model/post.dart';
 import 'package:money_goes_brr/user/controller/user.dart';
-import 'package:money_goes_brr/user/screen/user.dart';
+import 'package:money_goes_brr/user/views/user.dart';
 import 'package:shimmer/shimmer.dart';
 
 class Profit extends StatelessWidget {
