@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:money_goes_brr/constant.dart';
 import 'package:money_goes_brr/user/controller/user.dart';
-import 'package:money_goes_brr/user/model/user.dart';
 import 'package:video_compress/video_compress.dart';
 import 'package:permission_handler/permission_handler.dart';
 

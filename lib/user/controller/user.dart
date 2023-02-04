@@ -1,12 +1,18 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
-
+import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:money_goes_brr/constant.dart';
 import 'package:money_goes_brr/home/model/post.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../model/user.dart';
 
 class UserController extends GetxController {
-  final user = const User(
+  var user = User(
       id: "",
       name: "",
       email: "",
@@ -17,6 +23,8 @@ class UserController extends GetxController {
       history: History(historyItems: []),
       currentOwned: CurrentOwned(currentOwnedItems: []),
       saved: Saved(savedItems: [])).obs;
+
+  final updatedImage = Rxn<File>();
 
   @override
   void onInit() {
@@ -162,88 +170,50 @@ class UserController extends GetxController {
     update();
   }
 
-  void getMoreSaved(int count) {
-    user.update((val) {
-      for (var i = 0; i < count; i++) {
-        val!.saved.savedItems.add(Post(
-            userId: Random().nextInt(100000).toString(),
-            postId: Random().nextInt(100000).toString(),
-            postThumbnail: "https://picsum.photos/200",
-            postUrl: "https://picsum.photos/300",
-            postPrice: 0.0,
-            postCaption: "I am a software developer",
-            postLikes: 0,
-            shareableLink: "https://picsum.photos/200",
-            postType: PostType.image,
-            postDate: DateTime.now(),
-            postOwner: '',
-            transactions: const []));
-      }
-    });
+// update profile picture
+  Future<File?> pickimagefromgallery() async {
+    if (!await Permission.storage.isGranted) {
+      await Permission.storage.request();
+      Get.snackbar("Error", "No permission granted",
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
+      return null;
+    }
+    var _imagepicker = ImagePicker();
+    final pickedFile = await _imagepicker.pickImage(
+        source: ImageSource.gallery, imageQuality: 25);
+
+    if (pickedFile == null) {
+      Get.snackbar("Error", "No image selected",
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
+      return null;
+    }
+    updatedImage.value = File(pickedFile.path);
+    updatedImage.refresh();
+    return File(pickedFile.path);
   }
 
-  void getMoreHistory(int count) {
-    user.update((val) {
-      for (var i = 0; i < count; i++) {
-        val!.history.historyItems.add(Post(
-            userId: Random().nextInt(100000).toString(),
-            postId: Random().nextInt(100000).toString(),
-            postThumbnail: "https://picsum.photos/200",
-            postUrl: "https://picsum.photos/200",
-            postPrice: 0.0,
-            postCaption: "I am a software developer",
-            postLikes: 0,
-            shareableLink: "https://picsum.photos/200",
-            postType: PostType.image,
-            postDate: DateTime.now(),
-            postOwner: '',
-            transactions: const []));
-      }
-    });
+  Future<String> uploadImage(File image) async {
+    var request =
+        http.MultipartRequest(Constants().post, Uri.parse(Constants().posturl));
+    request.headers["Authorization"] = Constants().clientID;
+    var file = await http.MultipartFile.fromPath(
+      "image",
+      image.path,
+    );
+    request.files.add(file);
+    var response = await request.send();
+    var result = await http.Response.fromStream(response)
+        .then((value) => jsonDecode(value.body));
+    var data = result["data"];
+    // print(Constants().baseurl + data["id"] + Constants().ext);
+
+    var link = Constants().baseurl + data["id"] + Constants().ext;
+// update user image
+    return link;
   }
 
-  void getMoreCurrentOwned(int count) {
-    user.update((val) {
-      for (var i = 0; i < count; i++) {
-        val!.currentOwned.currentOwnedItems.add(Post(
-            userId: Random().nextInt(100000).toString(),
-            postId: Random().nextInt(100000).toString(),
-            postUrl: "https://picsum.photos/200",
-            postThumbnail: "https://picsum.photos/200",
-            postPrice: 0.0,
-            postCaption: "I am a software developer",
-            postLikes: 0,
-            shareableLink: "https://picsum.photos/200",
-            postType: PostType.image,
-            postDate: DateTime.now(),
-            postOwner: '',
-            transactions: const []));
-      }
-    });
+// get all the changed fields and update them
+  Future<void> updateProfile() async {
+    // update user details convert to json and send to server
   }
-
-// void getMoreProfit(int count) {
-//     user.update((val) {
-//       for (var i = 0; i < count; i++) {
-//         val!.profit.transactions.add(const Transactions(
-//             amount: 0.0,
-//             date: DateTime.now(),
-//             description: "I am a software developer",
-//             type: TransactionType.deposit));
-//       }
-//     });
-//   }
-
-//   void getMoreBalance(int count) {
-//     user.update((val) {
-//       for (var i = 0; i < count; i++) {
-//         val!.currentBalance.transactions.add(const Transactions(
-//             amount: 0.0,
-//             date: DateTime.now(),
-//             description: "I am a software developer",
-//             type: TransactionType.deposit));
-//       }
-//     });
-//   }
-
 }

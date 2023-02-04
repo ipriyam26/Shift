@@ -41,7 +41,9 @@ class PostScreen extends StatelessWidget {
                         color: const Color(0xffB548C6), fontSize: 16.sp),
                   ))
             ],
-          )),
+          )
+          
+          ),
       body: Stack(
         children: [
           Container(
@@ -163,7 +165,7 @@ class PostScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                                 fontSize: 17.sp),
                           ),
-                          Container(
+                          SizedBox(
                             width: 240.w,
                             child: TextField(
                               onChanged: (value) {
