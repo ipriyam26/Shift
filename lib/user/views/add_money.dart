@@ -8,7 +8,7 @@ class AddMoney extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Color(0xff282424),
+      backgroundColor: const Color(0xff282424),
       appBar: AppBar(
           backgroundColor: const Color(0xff252836),
           elevation: 0,
@@ -52,7 +52,7 @@ class AddMoney extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-              children: [
+              children: const [
                 Text("UPI Id" , style: TextStyle(color: Colors.white),),
                 Text("7364364@paytm" , style: TextStyle(color: Colors.white),)
               ],
@@ -66,12 +66,12 @@ class AddMoney extends StatelessWidget {
                   padding:  EdgeInsets.only(left :28.w),
                   child: Container(
                     width: 304.w,
-                    child: Center(child: Text("Add Money" , style: TextStyle(color: Colors.white),)),
                     height: 52.h,
                     decoration: BoxDecoration(
-                      color: Color(0xffB548C6),
+                      color: const Color(0xffB548C6),
                       borderRadius: BorderRadius.all(Radius.circular(10.sp))
                     ),
+                    child: const Center(child: Text("Add Money" , style: TextStyle(color: Colors.white),)),
                   ),
                 ),
               ],

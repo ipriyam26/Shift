@@ -80,7 +80,7 @@ class UserController extends GetxController {
         postLikes: 5,
         postType: t % 2 == 0 ? PostType.image : PostType.video,
         shareableLink: "",
-        transactions: [],
+        transactions: const [],
       );
     }).toList();
 
@@ -99,7 +99,7 @@ class UserController extends GetxController {
         postLikes: 5,
         postType: t % 2 == 0 ? PostType.image : PostType.video,
         shareableLink: "",
-        transactions: [],
+        transactions: const [],
       );
     }).toList();
 
@@ -118,7 +118,7 @@ class UserController extends GetxController {
         postLikes: 5,
         postType: t % 2 == 0 ? PostType.image : PostType.video,
         shareableLink: "",
-        transactions: [],
+        transactions: const [],
       );
     }).toList();
 
@@ -177,7 +177,7 @@ class UserController extends GetxController {
             postType: PostType.image,
             postDate: DateTime.now(),
             postOwner: '',
-            transactions: []));
+            transactions: const []));
       }
     });
   }
@@ -197,7 +197,7 @@ class UserController extends GetxController {
             postType: PostType.image,
             postDate: DateTime.now(),
             postOwner: '',
-            transactions: []));
+            transactions: const []));
       }
     });
   }
@@ -217,7 +217,7 @@ class UserController extends GetxController {
             postType: PostType.image,
             postDate: DateTime.now(),
             postOwner: '',
-            transactions: []));
+            transactions: const []));
       }
     });
   }

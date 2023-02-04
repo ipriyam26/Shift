@@ -5,11 +5,21 @@ import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:money_goes_brr/constant.dart';
+import 'package:money_goes_brr/user/controller/user.dart';
+import 'package:money_goes_brr/user/model/user.dart';
 import 'package:video_compress/video_compress.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class AddController extends GetxController {
-  var _imagepicker = ImagePicker();
+  final _imagepicker = ImagePicker();
+  final pickedFile = Rxn<File>();
+  final isVideoo = false.obs;
+  final thumbnail = Rxn<File>();
+  final caption = "".obs;
+  final priceTag = "".obs;
+  final isLoading = false.obs;
+  final UserController userController = Get.find<UserController>();
+
   Future<String> uploadVideo(File video) async {
     var request =
         http.MultipartRequest(Constants().post, Uri.parse(Constants().posturl));
@@ -56,7 +66,7 @@ class AddController extends GetxController {
     }
 
     final pickedFile = await _imagepicker.pickVideo(
-        source: ImageSource.gallery, maxDuration: Duration(seconds: 30));
+        source: ImageSource.gallery, maxDuration: const Duration(seconds: 30));
 
     if (pickedFile == null) {
       Get.snackbar("Error", "No image selected",
@@ -109,4 +119,38 @@ class AddController extends GetxController {
     );
     return File(info!.path!);
   }
+
+  Future<void> createPost() async {
+    if (caption.value.isEmpty) {
+      Get.snackbar("Error", "Caption cannot be empty",
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
+      return;
+    }
+    if (priceTag.value.isEmpty) {
+      Get.snackbar("Error", "Price cannot be empty",
+          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
+      return;
+    }
+    isLoading.value = true;
+    isLoading.refresh();
+    if (isVideoo.value) {
+      var videoUrl = await uploadVideo(pickedFile.value!);
+
+      var thumbnailUrl = await uploadImage(thumbnail.value!);
+    } else {
+      var imageUrl = await uploadImage(pickedFile.value!);
+    }
+    // validate price to be a number and caption to be not empty using regex and get snackbar if not valid
+
+    // create post here
+    String user = userController.user.value.id;
+    // now push post from here
+
+    isLoading.value = false;
+    isLoading.refresh();
+    Get.back();
+  }
+
+// create post
+
 }

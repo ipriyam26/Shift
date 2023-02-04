@@ -4,12 +4,6 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:money_goes_brr/add/views/open.dart';
 import 'package:money_goes_brr/add/views/post.dart';
 
-import 'package:money_goes_brr/home/views/homeView.dart';
-
-import 'package:money_goes_brr/user/views/balance.dart';
-
-import 'package:money_goes_brr/user/views/user.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -27,7 +21,7 @@ class MyApp extends StatelessWidget {
       builder: (context, a) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: PostScreen(),
+          home: Open(),
         );
       },
     );
