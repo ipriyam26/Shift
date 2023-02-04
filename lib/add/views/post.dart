@@ -43,7 +43,7 @@ class PostScreen extends StatelessWidget {
                     children: [
                       ClipOval(
                         child: Container(
-                          color: Color(0xffB548C6),
+                          color: const Color(0xffB548C6),
                           padding: EdgeInsets.all(1.w),
                           child: CachedNetworkImage(
                             imageUrl: user.user.value.imageUrl,
@@ -72,12 +72,12 @@ class PostScreen extends StatelessWidget {
                                   ),
                                 )),
                             errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                                const Icon(Icons.error),
                           ),
                         ),
                       ),
                       SizedBox(width: 8.w),
-                      Container(
+                      SizedBox(
                         height: 40.h,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

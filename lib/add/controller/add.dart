@@ -9,7 +9,7 @@ import 'package:video_compress/video_compress.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class AddController extends GetxController {
-  var _imagepicker = ImagePicker();
+  final _imagepicker = ImagePicker();
   Future<String> uploadVideo(File video) async {
     var request =
         http.MultipartRequest(Constants().post, Uri.parse(Constants().posturl));
@@ -56,7 +56,7 @@ class AddController extends GetxController {
     }
 
     final pickedFile = await _imagepicker.pickVideo(
-        source: ImageSource.gallery, maxDuration: Duration(seconds: 30));
+        source: ImageSource.gallery, maxDuration: const Duration(seconds: 30));
 
     if (pickedFile == null) {
       Get.snackbar("Error", "No image selected",

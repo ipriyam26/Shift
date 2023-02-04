@@ -12,7 +12,7 @@ class Open extends StatelessWidget {
     showModalBottomSheet(
         context: context,
         builder: (context) {
-          return Container(
+          return SizedBox(
             height: 200,
             child: Column(
               children: [
