@@ -121,13 +121,14 @@ class Profit extends StatelessWidget {
                                               fontFamily: GoogleFonts.inter()
                                                   .fontFamily),
                                         ),
+                                        if(cp!=0)
                                         Text(
                                           "${profit > 0 ? "+" : ""}${(profit).toStringAsFixed(2)} (${(profit / cp).toStringAsFixed(1)}%)",
                                           style: TextStyle(
                                               color: profit > 0
                                                   ? Colors.green
                                                   : Colors.red,
-                                              fontSize: 12.sp,
+                                              fontSize: 10.sp,
                                               fontWeight: FontWeight.w800,
                                               fontFamily: GoogleFonts.inter()
                                                   .fontFamily),
