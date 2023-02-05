@@ -58,6 +58,7 @@ dependencies:
   awesome_card: ^1.1.7
   flutter_spinkit: ^5.1.0
   http: ^0.13.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

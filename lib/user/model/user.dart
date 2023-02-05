@@ -1,19 +1,18 @@
 import 'package:money_goes_brr/home/model/post.dart';
 
 class User {
-  final String name;
-  final String email;
-  final String caption;
-  final String imageUrl;
-  final Profit profit;
+  String name;
+  String email;
+  String caption;
+  String imageUrl;
+  Profit profit;
+  Balance currentBalance;
+  History history;
+  CurrentOwned currentOwned;
+  Saved saved;
+  String id;
 
-  final Balance currentBalance;
-  final History history;
-  final CurrentOwned currentOwned;
-  final Saved saved;
-  final String id;
-
-  const User({
+  User({
     required this.id,
     required this.name,
     required this.email,
@@ -77,6 +76,7 @@ class CurrentOwned {
     );
   }
 }
+
 class History {
   final List<Post> historyItems;
 
