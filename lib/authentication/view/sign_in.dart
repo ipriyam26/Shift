@@ -24,11 +24,11 @@ class SignUp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
-                height: 40.h,
-              ),
+
+              SizedBox(height: 40.h,),
               Image.asset("assets/logo.png"),
-              SizedBox(height: 40.h),
+              SizedBox(height : 40.h),
+
 
               Text(
                 "SignUp",
@@ -127,10 +127,11 @@ class SignUp extends StatelessWidget {
                       textAlign: TextAlign.center,
                       text: const TextSpan(
                         children: <TextSpan>[
-                          TextSpan(text: 'By selecting Signup below, I agree to '),
-                          TextSpan(
-                              text: 'Terms & \ncondition.',
-                              style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xffB548C6))),
+
+                           TextSpan(text: 'By selecting Signup below, I agree to '),
+
+                           TextSpan(text: 'Terms & \ncondition.', style:  TextStyle(fontWeight: FontWeight.bold,color: Color(0xffB548C6))),
+
                         ],
                       ),
                     ),
@@ -176,11 +177,18 @@ class SignUp extends StatelessWidget {
                     height: 48.h,
                     width: 304.w,
                     decoration: BoxDecoration(
-                        color: const Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(8.sp))),
+
+                        color: const Color(0xffB548C6),
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(8.sp))),
                     child: Center(
                       child: Text(
                         'Sign Up',
-                        style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600, color: Colors.white),
+                        style: TextStyle(
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+
                       ),
                     ),
                   ),
@@ -271,10 +279,9 @@ class SignUp extends StatelessWidget {
                       Get.to(Login());
                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
                     },
-                    child: Text(
-                      "Sign Up",
-                      style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp, color: const Color(0xffF6800D)),
-                    ),
+
+                    child: Text("Sign Up",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14.sp,color: const Color(0xffB548C6)),),
+
                   )
                 ],
               ),

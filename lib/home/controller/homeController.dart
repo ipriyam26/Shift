@@ -1,8 +1,6 @@
-import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:money_goes_brr/home/model/home.dart';
-import 'package:http/http.dart' as http;
 import 'package:money_goes_brr/user/controller/user.dart';
 
 class HomeController extends GetxController {

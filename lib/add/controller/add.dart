@@ -135,7 +135,7 @@ class AddController extends GetxController {
 
       body = {
         "post": Post(
-                transactions: [],
+                transactions: const [],
                 postOwner: user,
                 postThumbnail: thumbnailUrl,
                 postId: "",
@@ -154,7 +154,7 @@ class AddController extends GetxController {
 
       body = {
         "post": Post(
-                transactions: [],
+                transactions: const [],
                 postOwner: user,
                 postThumbnail: Url,
                 postId: "",

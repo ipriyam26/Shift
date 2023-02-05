@@ -20,7 +20,7 @@ class EditScreen extends StatelessWidget {
       appBar:AppBar(
         backgroundColor: const Color(0xff252836),
         elevation: 0,
-        toolbarHeight: 80.h,
+        toolbarHeight: 40.h,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -50,7 +50,7 @@ class EditScreen extends StatelessWidget {
               child: Container(
                 width: 400.sp,
                 decoration: BoxDecoration(
-                  color: Color(0xff3C3C434A),
+                  color: const Color(0xff3c3c434a),
                   borderRadius: BorderRadius.circular(10.r),
                 ),
                 child: Column(
@@ -61,7 +61,7 @@ class EditScreen extends StatelessWidget {
                     ),
                     CircleAvatar(
                       radius: 40.sp,
-                      backgroundImage: const AssetImage('assets/Oval.png'),
+                      backgroundImage: NetworkImage(userController.user.value.imageUrl),
                       backgroundColor: Colors.red,
                     ),
                     SizedBox(
@@ -69,7 +69,7 @@ class EditScreen extends StatelessWidget {
                     ),
                     const Text(
                       'Change Profile Photo',
-                      style: TextStyle(color: Colors.red),
+                      style: TextStyle(color: Color(0xffB548C6)),
                     ),
 
                     SizedBox(
@@ -163,7 +163,7 @@ class EditRow extends StatelessWidget {
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: info,
-              hintStyle: TextStyle(color: Colors.white),
+              hintStyle: const TextStyle(color: Colors.white),
             ),
           ),
         ),

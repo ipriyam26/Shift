@@ -25,6 +25,8 @@ class _HomeViewState extends State<HomeView> {
   final userItem = HomeModel.items;
   final myController = TextEditingController();
   bool enabled = false;
+  var current_color = Colors.white;
+
   HomeController homeController = Get.put(HomeController());
   UserController userController = Get.put(UserController());
   AddController addController = Get.put(AddController());
@@ -41,7 +43,8 @@ class _HomeViewState extends State<HomeView> {
         children: [
           Text(
             "Purchase Cost",
-            style: TextStyle(color: Color(0xffB548C6), fontWeight: FontWeight.w700),
+            style: TextStyle(
+                color: Color(0xffB548C6), fontWeight: FontWeight.w700),
           ),
           SizedBox(
             height: 20.h,
@@ -197,7 +200,8 @@ class _HomeViewState extends State<HomeView> {
           ),
           Text(
             "Past Purchases",
-            style: TextStyle(color: Color(0xffB548C6), fontWeight: FontWeight.w700),
+            style: TextStyle(
+                color: Color(0xffB548C6), fontWeight: FontWeight.w700),
           ),
           SizedBox(
             height: 10.h,
@@ -218,11 +222,14 @@ class _HomeViewState extends State<HomeView> {
                     children: [
                       Container(
                         padding: const EdgeInsets.all(1), // Border width
-                        decoration: const BoxDecoration(color: Color(0xffB548C6), shape: BoxShape.circle),
+                        decoration: const BoxDecoration(
+                            color: Color(0xffB548C6), shape: BoxShape.circle),
                         child: ClipOval(
                           child: SizedBox.fromSize(
                             size: const Size.fromRadius(25), // Image radius
-                            child: Image.network(userItem[int.parse(postItem[index].userId)].userprofileUrl,
+                            child: Image.network(
+                                userItem[int.parse(postItem[index].userId)]
+                                    .userprofileUrl,
                                 fit: BoxFit.cover),
                           ),
                         ),
@@ -232,14 +239,23 @@ class _HomeViewState extends State<HomeView> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(userItem[index].userName.toUpperCase(),style: TextStyle(color: Colors.white),),
-                            Text("Profit",style: TextStyle(color: Colors.white),)
+                            Text(
+                              userItem[index].userName.toUpperCase(),
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            Text(
+                              "Profit",
+                              style: TextStyle(color: Colors.white),
+                            )
                           ],
                         ),
                       ),
                       Spacer(),
-                      Text('\$${postItem[index].postPrice}',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700),)
-
+                      Text(
+                        '\$${postItem[index].postPrice}',
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w700),
+                      )
                     ],
                     // width: 20.h,
                     // color: Colors.white,
@@ -447,7 +463,7 @@ class _HomeViewState extends State<HomeView> {
         context: context,
         builder: (context) {
           return SizedBox(
-            height: 200,
+            height: 200.h,
             child: Column(
               children: [
                 ListTile(
@@ -578,11 +594,12 @@ class _HomeViewState extends State<HomeView> {
             itemCount: postItem.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
-
               return GestureDetector(
                 onTap: () {
                   showDialog(
-                      context: context, builder: (BuildContext context) => buildPopupDialogGraph(context, index));
+                      context: context,
+                      builder: (BuildContext context) =>
+                          buildPopupDialogGraph(context, index));
                 },
                 child: Stack(
                   children: [
@@ -590,8 +607,10 @@ class _HomeViewState extends State<HomeView> {
                         ? Container(
                             height: 1.sh,
                             width: 1.sw,
-                            decoration:
-                                BoxDecoration(image: DecorationImage(image: NetworkImage(postItem[index].postUrl))),
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image:
+                                        NetworkImage(postItem[index].postUrl))),
                           )
                         : VideoPlayerItem(videoUrl: postItem[index].postUrl),
                     Padding(
@@ -602,47 +621,48 @@ class _HomeViewState extends State<HomeView> {
                         children: [
                           Container(
                             padding: const EdgeInsets.all(2), // Border width
-                            decoration: const BoxDecoration(color: Color(0xffF6800D), shape: BoxShape.circle),
+                            decoration: const BoxDecoration(
+                                color: Color(0xffF6800D),
+                                shape: BoxShape.circle),
                             child: ClipOval(
                               child: SizedBox.fromSize(
                                 size: const Size.fromRadius(35), // Image radius
-                                child: Image.network(userItem[int.parse(postItem[index].userId)].userprofileUrl,
+                                child: Image.network(
+                                    userItem[int.parse(postItem[index].userId)]
+                                        .userprofileUrl,
                                     fit: BoxFit.cover),
                               ),
                             ),
                           ),
-
                           SizedBox(
                             width: 10.w,
                           ),
-
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
                                 height: 10.h,
-
                               ),
                               Text(
-                                userItem[int.parse(postItem[index].userId)].userName,
-                                style: const TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w700),
+                                userItem[int.parse(postItem[index].userId)]
+                                    .userName,
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w700),
                               ),
                               SizedBox(
                                 height: 5.h,
                               ),
                               Text(
-                                userItem[int.parse(postItem[index].userId)].userGenere,
-                                style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
+                                userItem[int.parse(postItem[index].userId)]
+                                    .userGenere,
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600),
                               ),
-
-                              GestureDetector(
-                                  onTap: () {},
-                                  child: Image(
-                                      height: 24.32,
-                                      width: 16.25,
-                                      image: AssetImage("assets/save.png"))),
-
                             ],
                           ),
                           Spacer(),
@@ -668,8 +688,15 @@ class _HomeViewState extends State<HomeView> {
                       padding: EdgeInsets.only(bottom: 120.h),
                       child: Align(
                         alignment: Alignment.bottomCenter,
-                        child: Text(postItem[index].postCaption as String,
-                            style: const TextStyle(color: Colors.black, fontSize: 20)),
+                        child: Container(
+                          width: 256.w,
+                          child: Text(postItem[index].postCaption as String,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: GoogleFonts.openSans().fontFamily,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14.sp)),
+                        ),
                       ),
                     ),
                     Padding(
@@ -680,16 +707,20 @@ class _HomeViewState extends State<HomeView> {
                           width: 315.w,
                           height: 74.h,
                           decoration: const BoxDecoration(
-                              color: Color(0xff252836), borderRadius: BorderRadius.all(Radius.circular(20))),
+                              color: Color(0xff252836),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 20, right: 10),
+                            padding: EdgeInsets.symmetric(horizontal: 20.w),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 GestureDetector(
                                   onTap: () {
                                     showDialog(
                                       context: context,
-                                      builder: (BuildContext context) => _buildPopupDialog(context, index),
+                                      builder: (BuildContext context) =>
+                                          _buildPopupDialog(context, index),
                                     );
                                   },
                                   child: Stack(
@@ -700,17 +731,20 @@ class _HomeViewState extends State<HomeView> {
                                       Container(
                                         height: 32.h,
                                         width: 65.w,
-                                        margin: EdgeInsets.only(right: 4.w, bottom: 7.h),
+                                        margin: EdgeInsets.only(
+                                            right: 4.w, bottom: 7.h),
                                         alignment: Alignment.center,
                                         decoration: const BoxDecoration(
                                             color: Color(0xffB548C6),
-                                            borderRadius: BorderRadius.all(Radius.circular(15))),
-                                        child: Text('${postItem[index].postPrice}',
-                                            style: GoogleFonts.roboto(
-                                              color: Colors.white,
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w500,
-                                            )),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(15))),
+                                        child:
+                                            Text('${postItem[index].postPrice}',
+                                                style: GoogleFonts.roboto(
+                                                  color: Colors.white,
+                                                  fontSize: 14.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                )),
                                       ),
                                       Positioned(
                                         left: -6.w,
@@ -726,32 +760,34 @@ class _HomeViewState extends State<HomeView> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 33.82.w,
-                                ),
+                                GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        if (current_color == Colors.white) {
+                                          current_color = Color(0xffb548c6);
+                                        } else {
+                                          current_color = Colors.white;
+                                        }
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.favorite,
+                                      color: current_color,
+                                      size: 30,
+                                    )),
                                 GestureDetector(
                                     onTap: () {},
                                     child: const Icon(
-                                      Icons.favorite,
-                                      color: Colors.white,
-                                      size: 30,
-                                    )),
-                                SizedBox(
-                                  width: 33.82.w,
-                                ),
-                                GestureDetector(
-                                    onTap: () {},
-                                    child: Icon(
                                       Icons.share,
                                       color: Colors.white,
                                       size: 30,
                                     )),
-                                SizedBox(
-                                  width: 33.82.w,
-                                ),
                                 GestureDetector(
                                     onTap: () {},
-                                    child: Image(height: 24.32, width: 16.25, image: AssetImage("assets/save.png"))),
+                                    child: Image(
+                                        height: 24.32.h,
+                                        width: 16.25.w,
+                                        image: AssetImage("assets/save.png"))),
                               ],
                             ),
                           ),

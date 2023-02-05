@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import 'authentication/view/login.dart';
 
@@ -15,9 +14,10 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(const Duration(seconds: 5), () {
       Get.to(Login());
     });
   }
@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           Text(
             "Version1.0",
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17.sp, color: Color(0xff83848B)),
+            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17.sp, color: const Color(0xff83848B)),
           )
         ],
       ),

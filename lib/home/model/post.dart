@@ -6,16 +6,16 @@ class Post extends Equatable {
   final String userId;
   final String postUrl;
   final double postPrice;
-   String? postCaption;
+  String? postCaption;
   final int postLikes;
   final String shareableLink;
   final DateTime? postDate;
   final PostType? postType;
   final String postThumbnail;
-   String? postOwner;
-   List<Transactions>? transactions;
+  String? postOwner;
+  List<Transactions>? transactions;
 
-   Post({
+  Post({
     required this.transactions,
     required this.postOwner,
     required this.postThumbnail,
@@ -38,11 +38,13 @@ class Post extends Equatable {
       postCaption: json['postCaption'],
       postLikes: json['postLikes'],
       shareableLink: json['shareableLink'],
-      postDate: json['postDate'] != null ? DateTime.parse(json['postDate']) : null,
-      postType: json['postType'] != null ? _postTypeFromJson(json['postType']) : null,
+      postDate:
+          json['postDate'] != null ? DateTime.parse(json['postDate']) : null,
+      postType:
+          json['postType'] != null ? _postTypeFromJson(json['postType']) : null,
       postThumbnail: json['postThumbnail'],
       postOwner: json['postOwner'],
-      transactions: [],
+      transactions: const [],
     );
   }
 
@@ -75,11 +77,10 @@ class Post extends Equatable {
     }
   }
 
-
-  static List<Post> items =  [
-
+  static List<Post> items = [
     Post(
-        postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
+        postUrl:
+            "https://joy1.videvo.net/videvo_files/video/free/2014-12/large_watermarked/Metal_Wind_Chimes_at_Sunset_preview.mp4",
         postPrice: 100,
         postCaption: "Making memories one adventure at a time 📷 #TravelGoals",
         shareableLink: "shareableLink",
@@ -88,7 +89,8 @@ class Post extends Equatable {
         postId: "1",
         userId: "1",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -103,16 +105,18 @@ class Post extends Equatable {
               transactionType: TransactionType.added)
         ]),
     Post(
-        postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
+        postUrl: "https://joy.videvo.net/videvo_files/video/premium/partners0230/small_watermarked/BB_692d3e9f-c7d2-480a-b417-ff8a201a2424_preview.mp4",
         postPrice: 200,
-        postCaption: "Life is too short to not dance in the rain 💃 #MondayMotivation",
+        postCaption:
+            "Life is too short to not dance in the rain 💃 #MondayMotivation",
         shareableLink: "shareableLink",
         postLikes: 100,
         postType: PostType.video,
         postId: "2",
         userId: "1",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -127,7 +131,7 @@ class Post extends Equatable {
               transactionType: TransactionType.added)
         ]),
     Post(
-        postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
+        postUrl: "https://i.imgur.com/oeWFzfV.mp4",
         postPrice: 50,
         postCaption: "Good food, good vibes, and good company 🍴 #FoodieLife",
         shareableLink: "shareableLink",
@@ -136,7 +140,8 @@ class Post extends Equatable {
         postId: "3",
         userId: "2",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -160,7 +165,8 @@ class Post extends Equatable {
         postId: "4",
         userId: "2",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -189,7 +195,8 @@ class Post extends Equatable {
         postId: "5",
         userId: "3",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -211,14 +218,16 @@ class Post extends Equatable {
     Post(
         postUrl: "https://i.imgur.com/p2ZQ6mG.mp4",
         postPrice: 75,
-        postCaption: "Pursuing happiness one step at a time 🏃‍♀️ #NeverStopExploring",
+        postCaption:
+            "Pursuing happiness one step at a time 🏃‍♀️ #NeverStopExploring",
         shareableLink: "shareableLink",
         postLikes: 100,
         postType: PostType.video,
         postId: "6",
         userId: "3",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -247,7 +256,8 @@ class Post extends Equatable {
         postId: "7",
         userId: "4",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -276,7 +286,8 @@ class Post extends Equatable {
         postId: "8",
         userId: "4",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -305,7 +316,8 @@ class Post extends Equatable {
         postId: "9",
         userId: "5",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -327,14 +339,16 @@ class Post extends Equatable {
     Post(
         postUrl: "https://i.imgur.com/XTsY4Zb.mp4",
         postPrice: 75,
-        postCaption: "Capturing memories, one photo at a time 📸 #KeepExploring",
+        postCaption:
+            "Capturing memories, one photo at a time 📸 #KeepExploring",
         shareableLink: "shareableLink",
         postLikes: 100,
         postType: PostType.video,
         postId: "10",
         userId: "5",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -356,14 +370,16 @@ class Post extends Equatable {
     Post(
         postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
         postPrice: 75,
-        postCaption: "Finding joy in the little things 🌼 #TakeTimeToSmellTheRoses",
+        postCaption:
+            "Finding joy in the little things 🌼 #TakeTimeToSmellTheRoses",
         shareableLink: "shareableLink",
         postLikes: 100,
         postType: PostType.video,
         postId: "11",
         userId: "6",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -392,7 +408,8 @@ class Post extends Equatable {
         postId: "12",
         userId: "6",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: [
           Transactions(
@@ -414,8 +431,17 @@ class Post extends Equatable {
   ];
 
   @override
-  List<Object?> get props =>
-      [postUrl, postPrice, postCaption, shareableLink, postLikes, postId, userId, postThumbnail, postOwner];
+  List<Object?> get props => [
+        postUrl,
+        postPrice,
+        postCaption,
+        shareableLink,
+        postLikes,
+        postId,
+        userId,
+        postThumbnail,
+        postOwner
+      ];
 }
 
 enum PostType {

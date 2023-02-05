@@ -5,6 +5,7 @@ import 'package:money_goes_brr/authentication/view/sign_in.dart';
 // import 'package:waste_not/screens/presentation/signup.dart';
 
 import '../controller/login_controller.dart';
+import 'auth.dart';
 
 class Login extends StatelessWidget {
 // put login controller
@@ -25,10 +26,8 @@ class Login extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(height: 40.h),
-
               Image.asset("assets/logo.png"),
               SizedBox(height: 40.h),
-
               Text(
                 "Login",
                 style: TextStyle(
@@ -76,7 +75,6 @@ class Login extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20.h),
-
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.sp),
                 child: TextFormField(
@@ -116,7 +114,6 @@ class Login extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20.h),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -134,35 +131,6 @@ class Login extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20.h),
-              // Padding(
-              //   padding: EdgeInsets.symmetric(horizontal: 8.sp),
-              //   child: TextFormField(
-              //     textAlign: TextAlign.center,
-              //     keyboardType: TextInputType.text,
-              //     onFieldSubmitted: (value) {},
-              //     onChanged: (value) {
-              //       email = value;
-              //     },
-              //     decoration: InputDecoration(
-              //       hintText: 'Sign In',
-              //       hintStyle: TextStyle(
-              //         color: Colors.white,
-              //         fontSize: 17.sp,
-              //         fontWeight: FontWeight.w600,
-              //       ),
-              //       border: OutlineInputBorder(
-              //         borderRadius: BorderRadius.circular(8.sp),
-              //         borderSide: const BorderSide(
-              //           width: 2,
-              //           style: BorderStyle.none,
-              //         ),
-              //       ),
-              //       filled: true,
-              //       contentPadding: EdgeInsets.all(17.sp),
-              //       fillColor: Color(0xFFF6800D),
-              //     ),
-              //   ),
-              // ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -172,11 +140,20 @@ class Login extends StatelessWidget {
                     height: 48.h,
                     width: 304.w,
                     decoration: BoxDecoration(
-                        color: const Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(8.sp))),
+                        color: const Color(0xffB548C6),
+                        borderRadius: BorderRadius.all(Radius.circular(8.sp))),
                     child: Center(
-                      child: Text(
-                        'Login',
-                        style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600, color: Colors.white),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(() => const Auth());
+                        },
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
@@ -212,41 +189,45 @@ class Login extends StatelessWidget {
                   ],
                 ),
               ),
-
               SizedBox(height: 20.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Continue With :",
-                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17.sp, color: Colors.white),
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 17.sp,
+                        color: Colors.white),
                   )
                 ],
               ),
               SizedBox(height: 20.h),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
                     height: 44.h,
                     width: 44.w,
-                    decoration:
-                        BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(8.sp))),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(8.sp))),
                     child: Image.asset("assets/apple.png"),
                   ),
                   Container(
                     height: 44.h,
                     width: 44.w,
-                    decoration:
-                        BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(8.sp))),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(8.sp))),
                     child: Image.asset("assets/google.png"),
                   ),
                   Container(
                     height: 44.h,
                     width: 44.w,
-                    decoration:
-                        BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(8.sp))),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(8.sp))),
                     child: Image.asset("assets/fb.png"),
                   ),
                 ],
@@ -257,7 +238,10 @@ class Login extends StatelessWidget {
                 children: [
                   Text(
                     "Don't have an account?",
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, color: Colors.white),
+                    style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14.sp,
+                        color: Colors.white),
                   ),
                   SizedBox(
                     width: 5.w,
@@ -269,7 +253,10 @@ class Login extends StatelessWidget {
                     },
                     child: Text(
                       "Sign Up",
-                      style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp, color: const Color(0xffB548C6)),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14.sp,
+                          color: const Color(0xffB548C6)),
                     ),
                   )
                 ],

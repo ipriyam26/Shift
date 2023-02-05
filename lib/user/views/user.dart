@@ -13,7 +13,6 @@ import 'package:money_goes_brr/user/views/edit.dart';
 import 'package:money_goes_brr/user/views/profit.dart' as profit;
 import 'package:shimmer/shimmer.dart';
 
-import '../model/user.dart';
 
 class UserScreen extends StatelessWidget {
   @override
@@ -171,7 +170,7 @@ class TabView extends StatelessWidget {
                           color: Color(0xffB548C6),
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       child:
-                          Text('\$${data[index].postPrice.toStringAsFixed(1)}',
+                          Text(data[index].postPrice.toStringAsFixed(1),
                               style: GoogleFonts.roboto(
                                 color: Colors.white,
                                 fontSize: 14.sp,
@@ -274,7 +273,7 @@ class ClickableDetails extends StatelessWidget {
         width: 158.w,
         height: 85.h,
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Text("\$$cost",
+          Text("$cost",
               style: TextStyle(
                 fontFamily: GoogleFonts.poppins().fontFamily,
                 fontStyle: GoogleFonts.poppins().fontStyle,

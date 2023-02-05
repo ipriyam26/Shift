@@ -96,7 +96,7 @@ class Profit extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      "\$$sp",
+                                      "$sp",
                                       style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 12.sp,

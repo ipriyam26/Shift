@@ -21,9 +21,9 @@ class UserController extends GetxController {
       imageUrl: "",
       profit: Profit(profit: 0, transactions: []),
       currentBalance: Balance(balance: 0.0, transactions: []),
-      history: History(historyItems: []),
-      currentOwned: CurrentOwned(currentOwnedItems: []),
-      saved: Saved(savedItems: [])).obs;
+      history: const History(historyItems: []),
+      currentOwned: const CurrentOwned(currentOwnedItems: []),
+      saved: const Saved(savedItems: [])).obs;
 
   static const baseUrl = 'https://icosmic.onrender.com';
 
@@ -98,7 +98,7 @@ class UserController extends GetxController {
           postLikes: 5,
           postType: t % 2 == 0 ? PostType.image : PostType.video,
           shareableLink: "",
-          transactions: [],
+          transactions: const [],
         );
       }).toList();
 
@@ -117,7 +117,7 @@ class UserController extends GetxController {
           postLikes: 5,
           postType: t % 2 == 0 ? PostType.image : PostType.video,
           shareableLink: "",
-          transactions: [],
+          transactions: const [],
         );
       }).toList();
 
@@ -136,7 +136,7 @@ class UserController extends GetxController {
           postLikes: 5,
           postType: t % 2 == 0 ? PostType.image : PostType.video,
           shareableLink: "",
-          transactions: [],
+          transactions: const [],
         );
       }).toList();
 
@@ -206,7 +206,7 @@ class UserController extends GetxController {
       postLikes: post.postLikes,
       postType: post.postType,
       shareableLink: "",
-      transactions: [],
+      transactions: const [],
     );
 // add post to user history and also to currently owned reduce balance by post price
     user.value.currentOwned.currentOwnedItems.insert(0, post);
@@ -238,8 +238,8 @@ class UserController extends GetxController {
           snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
       return null;
     }
-    var _imagepicker = ImagePicker();
-    final pickedFile = await _imagepicker.pickImage(source: ImageSource.gallery, imageQuality: 25);
+    var imagepicker = ImagePicker();
+    final pickedFile = await imagepicker.pickImage(source: ImageSource.gallery, imageQuality: 25);
 
     if (pickedFile == null) {
       Get.snackbar("Error", "No image selected", snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
@@ -273,7 +273,7 @@ class UserController extends GetxController {
 
     user.refresh();
     // send to server
-    Uri uri = Uri.parse(Constants().baseurl + "/users/" + user.value.id);
+    Uri uri = Uri.parse("${Constants().baseurl}/users/${user.value.id}");
     http.put(uri,
         body: jsonEncode({
           "currentBalance": user.value.currentBalance.toJson(),
