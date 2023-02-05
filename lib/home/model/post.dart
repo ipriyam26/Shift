@@ -6,16 +6,16 @@ class Post extends Equatable {
   final String userId;
   final String postUrl;
   final double postPrice;
-  final String? postCaption;
+   String? postCaption;
   final int postLikes;
   final String shareableLink;
   final DateTime? postDate;
   final PostType? postType;
   final String postThumbnail;
-  final String? postOwner;
-  final List<Transactions>? transactions;
+   String? postOwner;
+   List<Transactions>? transactions;
 
-  const Post({
+   Post({
     required this.transactions,
     required this.postOwner,
     required this.postThumbnail,
@@ -75,7 +75,9 @@ class Post extends Equatable {
     }
   }
 
-  static List<Post> items = [
+
+  static List<Post> items =  [
+
     Post(
         postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
         postPrice: 100,

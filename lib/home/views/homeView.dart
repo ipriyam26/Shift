@@ -261,64 +261,183 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Widget buildPopupDialog2(BuildContext context, int index) {
+    var newPrice = 1.2 * postItem[index].postPrice;
+    var newCaption = postItem[index].postCaption;
     return AlertDialog(
+      contentPadding: EdgeInsets.all(8.w),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
-      backgroundColor: const Color(0xff252836),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextFormField(
-            initialValue: postItem[index].postCaption,
-            // controller: myController,
-          ),
-          TextFormField(
-            initialValue: postItem[index].postCaption,
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 32.h,
-                  width: 65.w,
-                  decoration: const BoxDecoration(
-                      color: Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(12))),
-                  child: const Center(
-                      child: Text(
-                    "YES",
-                    style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
-                  )),
+      backgroundColor: const Color(0xff282424),
+      content: Container(
+        width: 335.w,
+        height: 292.h,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 32.h),
+              child: Text(
+                "Add Details",
+                style: GoogleFonts.inter(
+                  color: Colors.white,
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-              const SizedBox(
-                width: 33,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  height: 32.h,
-                  width: 65.w,
-                  decoration: const BoxDecoration(
-                      color: Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(12))),
-                  child: const Center(
-                      child: Text(
-                    "NO",
-                    style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
-                  )),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Caption",
+                      style: GoogleFonts.inter(
+                        color: Colors.white,
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Container(
+                      width: 220.w,
+                      child: TextFormField(
+                        maxLines: 2,
+
+                        style: const TextStyle(color: Colors.white),
+                        initialValue: newCaption,
+                        onChanged: (value) {
+                          newCaption = value;
+                        },
+                        // controller: myController,
+                      ),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          )
-        ],
+                Container(
+                  margin: EdgeInsets.only(top: 10.h),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Add Price Tag",
+                          style: GoogleFonts.roboto(
+                            color: Colors.white,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Container(
+                            height: 52.h,
+                            // color: Colors.white,
+                            margin: EdgeInsets.only(top: 14.h),
+
+                            // this container contains image of coin in left side and stacked on a text field of grey color to enter amount of coin
+                            child: Stack(
+                              children: [
+                                Container(
+                                  height: 52.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.r),
+                                    color: const Color(0xff252836),
+                                  ),
+                                  child: TextFormField(
+                                    maxLines: 1,
+                                    initialValue: newPrice.toString(),
+                                    onChanged: (value) {
+                                      newPrice = double.parse(value);
+                                    },
+                                    keyboardType: TextInputType.number,
+                                    cursorColor: Colors.white,
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 24.sp),
+                                    decoration: InputDecoration(
+                                        // set offest of text field to right side
+                                        contentPadding: EdgeInsets.only(
+                                            left: 70.w, top: 10.h),
+
+                                        // active border color
+                                        focusedBorder: InputBorder.none,
+                                        // normal border color also white
+                                        enabledBorder: InputBorder.none,
+                                        border: InputBorder.none),
+                                  ),
+                                ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.r),
+                                  child: Image.asset(
+                                    "assets/coin.png",
+                                    height: 52.h,
+                                    width: 52.w,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ],
+                            ))
+                      ]),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        userController.buyItem(postItem[index]);
+// remove item from list
+                        postItem.removeAt(index);
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: 32.h,
+                        width: 65.w,
+                        decoration: const BoxDecoration(
+                            color: Color(0xffB548C6),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12))),
+                        child: const Center(
+                            child: Text(
+                          "YES",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                        )),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 33,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: 32.h,
+                        width: 65.w,
+                        decoration: const BoxDecoration(
+                            color: Color(0xffB548C6),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12))),
+                        child: const Center(
+                            child: Text(
+                          "NO",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                        )),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -382,7 +501,10 @@ class _HomeViewState extends State<HomeView> {
                 child: const Text(
                   "Are you sure you want to buy this?",
                   maxLines: 2,
-                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700),
                   textAlign: TextAlign.center,
                 )),
             Container(
@@ -397,18 +519,23 @@ class _HomeViewState extends State<HomeView> {
                     Navigator.pop(context);
                     showDialog(
                       context: context,
-                      builder: (BuildContext context) => buildPopupDialog2(context, index),
+                      builder: (BuildContext context) =>
+                          buildPopupDialog2(context, index),
                     );
                   },
                   child: Container(
                     height: 32.h,
                     width: 65.w,
                     decoration: const BoxDecoration(
-                        color: Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(12))),
+                        color: Color(0xffB548C6),
+                        borderRadius: BorderRadius.all(Radius.circular(12))),
                     child: const Center(
                         child: Text(
                       "YES",
-                      style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
                     )),
                   ),
                 ),
@@ -423,11 +550,15 @@ class _HomeViewState extends State<HomeView> {
                     height: 32.h,
                     width: 65.w,
                     decoration: const BoxDecoration(
-                        color: Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(12))),
+                        color: Color(0xffB548C6),
+                        borderRadius: BorderRadius.all(Radius.circular(12))),
                     child: const Center(
                         child: Text(
                       "NO",
-                      style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
                     )),
                   ),
                 )
@@ -447,6 +578,7 @@ class _HomeViewState extends State<HomeView> {
             itemCount: postItem.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (context, index) {
+
               return GestureDetector(
                 onTap: () {
                   showDialog(
@@ -479,15 +611,18 @@ class _HomeViewState extends State<HomeView> {
                               ),
                             ),
                           ),
+
                           SizedBox(
                             width: 10.w,
                           ),
+
                           Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
                                 height: 10.h,
+
                               ),
                               Text(
                                 userItem[int.parse(postItem[index].userId)].userName,
@@ -500,6 +635,14 @@ class _HomeViewState extends State<HomeView> {
                                 userItem[int.parse(postItem[index].userId)].userGenere,
                                 style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
                               ),
+
+                              GestureDetector(
+                                  onTap: () {},
+                                  child: Image(
+                                      height: 24.32,
+                                      width: 16.25,
+                                      image: AssetImage("assets/save.png"))),
+
                             ],
                           ),
                           Spacer(),
