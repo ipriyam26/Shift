@@ -11,6 +11,7 @@ class HomeController extends GetxController {
 
   static const baseUrl = 'https://icosmic.onrender.com';
 
+
   //   Future<HomeModel> fetchContent() async {
   //   String url = baseUrl + "/homemodel"+userController.user.value.id;
   //   print(url);

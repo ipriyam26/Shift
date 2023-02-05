@@ -151,9 +151,7 @@ class AddController extends GetxController {
       };
     } else {
       var Url = await uploadImage(pickedFile.value!);
-
-      body = {
-        "post": Post(
+Post post = Post(
                 transactions: const [],
                 postOwner: user,
                 postThumbnail: Url,
@@ -165,9 +163,12 @@ class AddController extends GetxController {
                 shareableLink: Url,
                 postLikes: 0,
                 postType: PostType.image,
-                postDate: DateTime.now())
+                postDate: DateTime.now());
+      body = {
+        "post": post
             .toJson()
       };
+
     }
     // validate price to be a number and caption to be not empty using regex and get snackbar if not valid
 
@@ -182,6 +183,7 @@ class AddController extends GetxController {
     }
 
     isLoading.value = false;
+
     isLoading.refresh();
 
     Get.back();

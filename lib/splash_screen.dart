@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:money_goes_brr/authentication/view/auth.dart';
 
 import 'authentication/view/login.dart';
 
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 5), () {
-      Get.to(Login());
+      Get.to(Auth());
     });
   }
 
@@ -37,7 +38,10 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           Text(
             "Version1.0",
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17.sp, color: const Color(0xff83848B)),
+            style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 17.sp,
+                color: const Color(0xff83848B)),
           )
         ],
       ),

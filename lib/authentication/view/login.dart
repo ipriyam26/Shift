@@ -143,9 +143,23 @@ class Login extends StatelessWidget {
                         color: const Color(0xffB548C6),
                         borderRadius: BorderRadius.all(Radius.circular(8.sp))),
                     child: Center(
-                      child: GestureDetector(
+                      child: InkWell(
                         onTap: () {
-                          Get.to(() => const Auth());
+                          final snackBar = SnackBar(
+                            content: const Text('Incorrect Id Or Password'),
+                            action: SnackBarAction(
+                              label: 'Undo',
+                              onPressed: () {
+                                // Some code to undo the change.
+                              },
+                            ),
+                          );
+                          if (email == "priyam@gmail.com") {
+                            Get.to(() => const Auth());
+                          } else {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
+                          }
                         },
                         child: Text(
                           'Login',

@@ -670,16 +670,23 @@ class _HomeViewState extends State<HomeView> {
                             SizedBox(
                               height: 15,
                             ),
-                            Padding(
-                                padding: EdgeInsets.only(right: 10),
-                                child: GestureDetector(
-                                    onTap: () {
-                                      _showModalBottomSheet(context);
-                                    },
-                                    child: Icon(
-                                      Icons.add_a_photo,
-                                      size: 30,
-                                    )))
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                color: Color.fromARGB(11, 0, 0, 0).withOpacity(0.05),
+                                  padding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 5.h),
+                                  margin: EdgeInsets.only(right: 10.w),
+                                  child: GestureDetector(
+                                      onTap: () {
+                                        _showModalBottomSheet(context);
+                                      },
+                                      child: const Icon(
+                                        
+                                        Icons.add_a_photo,
+                                        size: 30,
+                                        color: Colors.white,
+                                      ))),
+                            )
                           ])
                         ],
                       ),
