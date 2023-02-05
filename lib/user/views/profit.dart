@@ -25,8 +25,7 @@ class Profit extends StatelessWidget {
           Expanded(
             // height: 640.h,
             // width: 350.w,
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Container(
                 margin: EdgeInsets.only(left: 33.w, top: 18.h, bottom: 10.h),
                 child: Text(
@@ -46,96 +45,76 @@ class Profit extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 0.0),
                       shrinkWrap: true,
                       crossAxisCount: 2,
-                      itemCount:
-                          controller.user.value.profit.transactions.length,
+                      itemCount: controller.user.value.profit.transactions.length,
                       itemBuilder: (BuildContext context, int index) {
-                        var sp = controller.user.value.profit
-                            .transactions[index].sale.transactionAmount;
-                        var cp = controller.user.value.profit
-                            .transactions[index].purchase.transactionAmount;
+                        var sp = controller.user.value.profit.transactions[index].sale.transactionAmount;
+                        var cp = controller.user.value.profit.transactions[index].purchase.transactionAmount;
                         var profit = sp - cp;
                         return Container(
                           padding: EdgeInsets.all(5.w),
                           decoration: const BoxDecoration(
-                              color: Colors.transparent,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15))),
-                          child: Stack(
-                              alignment: Alignment.bottomRight,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(15)),
-                                  child: CachedNetworkImage(
-                                    imageUrl: controller.user.value.profit
-                                        .transactions[index].post.postThumbnail,
-                                    fit: BoxFit.cover,
-                                    placeholder: (context, url) => SizedBox(
-                                      width: 200.0.w,
-                                      height: 300.0.h,
-                                      child: Shimmer.fromColors(
-                                        baseColor: Colors.grey.shade300,
-                                        highlightColor: Colors.grey.shade100,
-                                        child: Container(
-                                          color: Colors.grey,
-                                          height: 300.h,
-                                        ),
-                                      ),
+                              color: Colors.transparent, borderRadius: BorderRadius.all(Radius.circular(15))),
+                          child: Stack(alignment: Alignment.bottomRight, children: [
+                            ClipRRect(
+                              borderRadius: const BorderRadius.all(Radius.circular(15)),
+                              child: CachedNetworkImage(
+                                imageUrl: controller.user.value.profit.transactions[index].post.postThumbnail,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => SizedBox(
+                                  width: 200.0.w,
+                                  height: 300.0.h,
+                                  child: Shimmer.fromColors(
+                                    baseColor: Colors.grey.shade300,
+                                    highlightColor: Colors.grey.shade100,
+                                    child: Container(
+                                      color: Colors.grey,
+                                      height: 300.h,
                                     ),
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
                                   ),
                                 ),
-                                if (controller.user.value.profit
-                                        .transactions[index].post.postType ==
-                                    PostType.video)
-                                  Positioned(
-                                    bottom: 5.h,
-                                    left: 5.h,
-                                    child: Icon(
-                                      Icons.play_arrow,
-                                      color: Colors.white,
-                                      size: 30.sp,
+                                errorWidget: (context, url, error) => const Icon(Icons.error),
+                              ),
+                            ),
+                            if (controller.user.value.profit.transactions[index].post.postType == PostType.video)
+                              Positioned(
+                                bottom: 5.h,
+                                left: 5.h,
+                                child: Icon(
+                                  Icons.play_arrow,
+                                  color: Colors.white,
+                                  size: 30.sp,
+                                ),
+                              ),
+                            Container(
+                                height: 38.h,
+                                width: 92.w,
+                                margin: EdgeInsets.only(right: 11.w, bottom: 8.h),
+                                alignment: Alignment.center,
+                                decoration: const BoxDecoration(
+                                    color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(8))),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "\$$sp",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.w800,
+                                          fontFamily: GoogleFonts.inter().fontFamily),
                                     ),
-                                  ),
-                                Container(
-                                    height: 38.h,
-                                    width: 92.w,
-                                    margin: EdgeInsets.only(
-                                        right: 11.w, bottom: 8.h),
-                                    alignment: Alignment.center,
-                                    decoration: const BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(8))),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          "\$$sp",
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w800,
-                                              fontFamily: GoogleFonts.inter()
-                                                  .fontFamily),
-                                        ),
-                                        if(cp!=0)
-                                        Text(
-                                          "${profit > 0 ? "+" : ""}${(profit).toStringAsFixed(2)} (${(profit / cp).toStringAsFixed(1)}%)",
-                                          style: TextStyle(
-                                              color: profit > 0
-                                                  ? Colors.green
-                                                  : Colors.red,
-                                              fontSize: 10.sp,
-                                              fontWeight: FontWeight.w800,
-                                              fontFamily: GoogleFonts.inter()
-                                                  .fontFamily),
-                                        )
-                                      ],
-                                    )),
-                              ]),
+                                    if (cp != 0)
+                                      Text(
+                                        "${profit > 0 ? "+" : ""}${(profit).toStringAsFixed(2)} (${(profit / cp).toStringAsFixed(1)}%)",
+                                        style: TextStyle(
+                                            color: profit > 0 ? Colors.green : Colors.red,
+                                            fontSize: 10.sp,
+                                            fontWeight: FontWeight.w800,
+                                            fontFamily: GoogleFonts.inter().fontFamily),
+                                      )
+                                  ],
+                                )),
+                          ]),
                         );
                       });
                 }),

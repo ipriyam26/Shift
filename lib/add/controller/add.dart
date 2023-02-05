@@ -20,8 +20,7 @@ class AddController extends GetxController {
   final UserController userController = Get.find<UserController>();
 
   Future<String> uploadVideo(File video) async {
-    var request =
-        http.MultipartRequest(Constants().post, Uri.parse(Constants().posturl));
+    var request = http.MultipartRequest(Constants().post, Uri.parse(Constants().posturl));
     request.headers["Authorization"] = Constants().clientID;
     var file = await http.MultipartFile.fromPath(
       "video",
@@ -30,8 +29,7 @@ class AddController extends GetxController {
 
     request.files.add(file);
     var response = await request.send();
-    var result = await http.Response.fromStream(response)
-        .then((value) => jsonDecode(value.body));
+    var result = await http.Response.fromStream(response).then((value) => jsonDecode(value.body));
     var data = result["data"];
     // print(Constants().baseurl + data["id"] + Constants().ext);
     return Constants().baseurl + data["id"] + Constants().videoExt;
@@ -45,12 +43,10 @@ class AddController extends GetxController {
           snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
       return null;
     }
-    final pickedFile = await _imagepicker.pickImage(
-        source: ImageSource.gallery, imageQuality: 25);
+    final pickedFile = await _imagepicker.pickImage(source: ImageSource.gallery, imageQuality: 25);
 
     if (pickedFile == null) {
-      Get.snackbar("Error", "No image selected",
-          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
+      Get.snackbar("Error", "No image selected", snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
       return null;
     }
     return File(pickedFile.path);
@@ -64,12 +60,11 @@ class AddController extends GetxController {
       return null;
     }
 
-    final pickedFile = await _imagepicker.pickVideo(
-        source: ImageSource.gallery, maxDuration: const Duration(seconds: 30));
+    final pickedFile =
+        await _imagepicker.pickVideo(source: ImageSource.gallery, maxDuration: const Duration(seconds: 30));
 
     if (pickedFile == null) {
-      Get.snackbar("Error", "No image selected",
-          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
+      Get.snackbar("Error", "No image selected", snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
       return null;
     }
     print(pickedFile.path);
@@ -77,8 +72,7 @@ class AddController extends GetxController {
   }
 
   Future<String> uploadImage(File image) async {
-    var request =
-        http.MultipartRequest(Constants().post, Uri.parse(Constants().posturl));
+    var request = http.MultipartRequest(Constants().post, Uri.parse(Constants().posturl));
     request.headers["Authorization"] = Constants().clientID;
     var file = await http.MultipartFile.fromPath(
       "image",
@@ -86,8 +80,7 @@ class AddController extends GetxController {
     );
     request.files.add(file);
     var response = await request.send();
-    var result = await http.Response.fromStream(response)
-        .then((value) => jsonDecode(value.body));
+    var result = await http.Response.fromStream(response).then((value) => jsonDecode(value.body));
     var data = result["data"];
     // print(Constants().baseurl + data["id"] + Constants().ext);
     return Constants().baseurl + data["id"] + Constants().ext;
@@ -151,5 +144,4 @@ class AddController extends GetxController {
   }
 
 // create post
-
 }

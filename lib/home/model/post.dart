@@ -30,31 +30,90 @@ class Post extends Equatable {
     required this.postDate,
   });
 
-  static List<Post> items = [
-    // Post(postUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", postPrice: 100, postCaption: "postCaption", shareableLink: "shareableLink", postLikes: 100, postType: PostType.video,postId: "1",userId: "1",
-    // postOwner: "2",
-    // postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"),
-    // ),
-    // Post(postUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", postPrice: 100, postCaption: "postCaption", shareableLink: "shareableLink", postLikes: 100, postType: PostType.video,postId:2,userId: 1),
-    // Post(postUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", postPrice: 100, postCaption: "postCaption", shareableLink: "shareableLink", postLikes: 100, postType: PostType.video,postId:3,userId: 2),
-    // Post(postUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", postPrice: 100, postCaption: "postCaption", shareableLink: "shareableLink", postLikes: 100, postType: PostType.video,postId:4,userId: 2),
-    // Post(postUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", postPrice: 100, postCaption: "postCaption", shareableLink: "shareableLink", postLikes: 100, postType: PostType.video,postId:5,userId: 3),
-    // Post(postUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", postPrice: 100, postCaption: "postCaption", shareableLink: "shareableLink", postLikes: 100, postType: PostType.video,postId:6,userId: 3),
-    // Post(postUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4", postPrice: 100, postCaption: "postCaption", shareableLink: "shareableLink", postLikes: 100, postType: PostType.video,postId:7,userId: 4),
+  static List<Post> items = const [
+    Post(
+        postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
+        postPrice: 100,
+        postCaption: "postCaption",
+        shareableLink: "shareableLink",
+        postLikes: 100,
+        postType: PostType.video,
+        postId: "1",
+        userId: "1",
+        postOwner: "2",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postDate: null,
+        transactions: []),
+    Post(
+        postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
+        postPrice: 200,
+        postCaption: "postCaption",
+        shareableLink: "shareableLink",
+        postLikes: 100,
+        postType: PostType.video,
+        postId: "1",
+        userId: "1",
+        postOwner: "2",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postDate: null,
+        transactions: []),
+    Post(
+        postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
+        postPrice: 50,
+        postCaption: "postCaption",
+        shareableLink: "shareableLink",
+        postLikes: 100,
+        postType: PostType.video,
+        postId: "1",
+        userId: "1",
+        postOwner: "2",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postDate: null,
+        transactions: []),
+    Post(
+        postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
+        postPrice: 150,
+        postCaption: "postCaption",
+        shareableLink: "shareableLink",
+        postLikes: 100,
+        postType: PostType.video,
+        postId: "1",
+        userId: "1",
+        postOwner: "2",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postDate: null,
+        transactions: []),
+    Post(
+        postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
+        postPrice: 80,
+        postCaption: "postCaption",
+        shareableLink: "shareableLink",
+        postLikes: 100,
+        postType: PostType.video,
+        postId: "1",
+        userId: "1",
+        postOwner: "2",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postDate: null,
+        transactions: []),
+    Post(
+        postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
+        postPrice: 75,
+        postCaption: "postCaption",
+        shareableLink: "shareableLink",
+        postLikes: 100,
+        postType: PostType.video,
+        postId: "1",
+        userId: "1",
+        postOwner: "2",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postDate: null,
+        transactions: []),
   ];
 
   @override
-  List<Object?> get props => [
-        postUrl,
-        postPrice,
-        postCaption,
-        shareableLink,
-        postLikes,
-        postId,
-        userId,
-        postThumbnail,
-        postOwner
-      ];
+  List<Object?> get props =>
+      [postUrl, postPrice, postCaption, shareableLink, postLikes, postId, userId, postThumbnail, postOwner];
 }
 
 enum PostType {

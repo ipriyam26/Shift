@@ -14,10 +14,7 @@ class PostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var textFieldTextStyle = TextStyle(
-        color: Colors.white,
-        fontFamily: GoogleFonts.roboto().fontFamily,
-        fontWeight: FontWeight.w400,
-        fontSize: 16.sp);
+        color: Colors.white, fontFamily: GoogleFonts.roboto().fontFamily, fontWeight: FontWeight.w400, fontSize: 16.sp);
     return Scaffold(
       backgroundColor: const Color(0xff282424),
       appBar: AppBar(
@@ -37,13 +34,10 @@ class PostScreen extends StatelessWidget {
                   },
                   child: Text(
                     "Post",
-                    style: TextStyle(
-                        color: const Color(0xffB548C6), fontSize: 16.sp),
+                    style: TextStyle(color: const Color(0xffB548C6), fontSize: 16.sp),
                   ))
             ],
-          )
-          
-          ),
+          )),
       body: Stack(
         children: [
           Container(
@@ -63,8 +57,7 @@ class PostScreen extends StatelessWidget {
                                 padding: EdgeInsets.all(1.w),
                                 child: CachedNetworkImage(
                                   imageUrl: userController.user.value.imageUrl,
-                                  imageBuilder: (context, imageProvider) =>
-                                      Container(
+                                  imageBuilder: (context, imageProvider) => Container(
                                     height: 54.h,
                                     width: 54.w,
                                     decoration: BoxDecoration(
@@ -75,22 +68,18 @@ class PostScreen extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  placeholder: (context, url) =>
-                                      Shimmer.fromColors(
-                                          baseColor: const Color.fromARGB(
-                                              0, 106, 106, 108),
-                                          highlightColor: const Color.fromARGB(
-                                              0, 123, 123, 124),
-                                          child: Container(
-                                            height: 54.h,
-                                            width: 54.w,
-                                            decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Colors.grey,
-                                            ),
-                                          )),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(Icons.error),
+                                  placeholder: (context, url) => Shimmer.fromColors(
+                                      baseColor: const Color.fromARGB(0, 106, 106, 108),
+                                      highlightColor: const Color.fromARGB(0, 123, 123, 124),
+                                      child: Container(
+                                        height: 54.h,
+                                        width: 54.w,
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.grey,
+                                        ),
+                                      )),
+                                  errorWidget: (context, url, error) => const Icon(Icons.error),
                                 ),
                               ),
                             ),
@@ -99,27 +88,23 @@ class PostScreen extends StatelessWidget {
                               height: 40.h,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     userController.user.value.name,
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.w500,
-                                        fontFamily:
-                                            GoogleFonts.roboto().fontFamily,
+                                        fontFamily: GoogleFonts.roboto().fontFamily,
                                         fontSize: 17.sp),
                                   ),
                                   Text(
-                                    userController.user.value.caption.length >
-                                            25
+                                    userController.user.value.caption.length > 25
                                         ? "${userController.user.value.caption.substring(0, 20)}..."
                                         : userController.user.value.caption,
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontFamily:
-                                            GoogleFonts.roboto().fontFamily,
+                                        fontFamily: GoogleFonts.roboto().fontFamily,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 14.sp),
                                   ),
@@ -140,9 +125,7 @@ class PostScreen extends StatelessWidget {
                               );
                             }
                             return Image.file(
-                              controller.isVideoo.value
-                                  ? controller.thumbnail.value!
-                                  : controller.pickedFile.value!,
+                              controller.isVideoo.value ? controller.thumbnail.value! : controller.pickedFile.value!,
                               height: 61.h,
                               width: 61.w,
                               fit: BoxFit.cover,
@@ -178,16 +161,10 @@ class PostScreen extends StatelessWidget {
                               style: textFieldTextStyle,
                               decoration: InputDecoration(
                                 // active border color
-                                focusedBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
+                                focusedBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
                                 // normal border color also white
-                                enabledBorder: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
-                                border: const UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Colors.white)),
+                                enabledBorder: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                                border: const UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
                                 hintText: "What's on your mind?",
                                 hintStyle: textFieldTextStyle,
                               ),
@@ -227,12 +204,10 @@ class PostScreen extends StatelessWidget {
                                     },
                                     keyboardType: TextInputType.number,
                                     cursorColor: Colors.white,
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 24.sp),
+                                    style: TextStyle(color: Colors.white, fontSize: 24.sp),
                                     decoration: InputDecoration(
                                         // set offest of text field to right side
-                                        contentPadding: EdgeInsets.only(
-                                            left: 70.w, top: 10.h),
+                                        contentPadding: EdgeInsets.only(left: 70.w, top: 10.h),
 
                                         // active border color
                                         focusedBorder: InputBorder.none,
@@ -257,9 +232,9 @@ class PostScreen extends StatelessWidget {
                   ],
                 ),
               )),
-            GetX<AddController>(builder: (controller) {
-          if (controller.isLoading.value) {
-            return Container(
+          GetX<AddController>(builder: (controller) {
+            if (controller.isLoading.value) {
+              return Container(
                 color: Colors.black.withOpacity(0.6),
                 width: double.infinity,
                 child: Center(
@@ -268,9 +243,9 @@ class PostScreen extends StatelessWidget {
                   size: 70.sp,
                 )),
               );
-          }
+            }
             return Container();
-            })
+          })
         ],
       ),
     );
