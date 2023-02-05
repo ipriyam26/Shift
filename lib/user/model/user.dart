@@ -117,9 +117,7 @@ class Balance {
             balance: json['balance'].toDouble(),
             transactions: (json['transactions'] == null)
                 ? []
-                : (json['transactions'] as List)
-                    .map((e) => Transactions.fromJson(e))
-                    .toList(),
+                : (json['transactions'] as List).map((e) => Transactions.fromJson(e)).toList(),
           );
   }
 }
@@ -216,9 +214,8 @@ class Profit {
         ? const Profit(profit: 0.0, transactions: [])
         : Profit(
             profit: json['profit'].toDouble(),
-            transactions: (json['transactions'] as List)
-                .map((transaction) => PostTransaction.fromJson(transaction))
-                .toList(),
+            transactions:
+                (json['transactions'] as List).map((transaction) => PostTransaction.fromJson(transaction)).toList(),
           );
   }
 }

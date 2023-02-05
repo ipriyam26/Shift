@@ -38,10 +38,8 @@ class Post extends Equatable {
       postCaption: json['postCaption'],
       postLikes: json['postLikes'],
       shareableLink: json['shareableLink'],
-      postDate:
-          json['postDate'] != null ? DateTime.parse(json['postDate']) : null,
-      postType:
-          json['postType'] != null ? _postTypeFromJson(json['postType']) : null,
+      postDate: json['postDate'] != null ? DateTime.parse(json['postDate']) : null,
+      postType: json['postType'] != null ? _postTypeFromJson(json['postType']) : null,
       postThumbnail: json['postThumbnail'],
       postOwner: json['postOwner'],
       transactions: [],
@@ -88,25 +86,44 @@ class Post extends Equatable {
         postId: "1",
         userId: "1",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "134134", transactionAmount: 200, transactionDate: DateTime.now(), transactionType: TransactionType.sold),Transactions(transactionId: "134134", transactionAmount: 142, transactionDate: DateTime.now(), transactionType: TransactionType.added)]),
+        transactions: [
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 200,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.sold),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 142,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added)
+        ]),
     Post(
         postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
         postPrice: 200,
-        postCaption: "Life is too short to not dance in the rain 💃 #MondayMotivation"
-,
+        postCaption: "Life is too short to not dance in the rain 💃 #MondayMotivation",
         shareableLink: "shareableLink",
         postLikes: 100,
         postType: PostType.video,
         postId: "2",
         userId: "1",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "124124", transactionAmount: 123, transactionDate: DateTime.now(), transactionType: TransactionType.added),Transactions(transactionId: "134134", transactionAmount: 345, transactionDate: DateTime.now(), transactionType: TransactionType.added)]),
+        transactions: [
+          Transactions(
+              transactionId: "124124",
+              transactionAmount: 123,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 345,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added)
+        ]),
     Post(
         postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
         postPrice: 50,
@@ -117,10 +134,20 @@ class Post extends Equatable {
         postId: "3",
         userId: "2",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "12421", transactionAmount: 145, transactionDate: DateTime.now(), transactionType: TransactionType.cashedOut),Transactions(transactionId: "134134", transactionAmount: 565, transactionDate: DateTime.now(), transactionType: TransactionType.added)]),
+        transactions: [
+          Transactions(
+              transactionId: "12421",
+              transactionAmount: 145,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.cashedOut),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 565,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added)
+        ]),
     Post(
         postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
         postPrice: 150,
@@ -131,10 +158,25 @@ class Post extends Equatable {
         postId: "4",
         userId: "2",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "124214", transactionAmount: 225, transactionDate: DateTime.now(), transactionType: TransactionType.added),Transactions(transactionId: "134134", transactionAmount: 123, transactionDate: DateTime.now(), transactionType: TransactionType.added),Transactions(transactionId: "134134", transactionAmount: 765, transactionDate: DateTime.now(), transactionType: TransactionType.added)]),
+        transactions: [
+          Transactions(
+              transactionId: "124214",
+              transactionAmount: 225,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 123,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 765,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added)
+        ]),
     Post(
         postUrl: "https://i.imgur.com/nxhBPid.jpeg",
         postPrice: 80,
@@ -145,10 +187,25 @@ class Post extends Equatable {
         postId: "5",
         userId: "3",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "12421412", transactionAmount: 543, transactionDate: DateTime.now(), transactionType: TransactionType.bought),Transactions(transactionId: "134134", transactionAmount: 435, transactionDate: DateTime.now(), transactionType: TransactionType.added),Transactions(transactionId: "134134", transactionAmount: 124, transactionDate: DateTime.now(), transactionType: TransactionType.added)]),
+        transactions: [
+          Transactions(
+              transactionId: "12421412",
+              transactionAmount: 543,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.bought),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 435,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 124,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added)
+        ]),
     Post(
         postUrl: "https://i.imgur.com/p2ZQ6mG.mp4",
         postPrice: 75,
@@ -159,11 +216,26 @@ class Post extends Equatable {
         postId: "6",
         userId: "3",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "124wrq1", transactionAmount: 123, transactionDate: DateTime.now(), transactionType: TransactionType.sold),Transactions(transactionId: "134134", transactionAmount: 542, transactionDate: DateTime.now(), transactionType: TransactionType.added),Transactions(transactionId: "134134", transactionAmount: 356, transactionDate: DateTime.now(), transactionType: TransactionType.added),]),
-        Post(
+        transactions: [
+          Transactions(
+              transactionId: "124wrq1",
+              transactionAmount: 123,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.sold),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 542,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 356,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+        ]),
+    Post(
         postUrl: "https://i.imgur.com/2gwaqQv.png",
         postPrice: 75,
         postCaption: "Embracing my inner child 🎡 #NeverGrowUp",
@@ -173,12 +245,26 @@ class Post extends Equatable {
         postId: "7",
         userId: "4",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "124wrq1", transactionAmount: 123, transactionDate: DateTime.now(), transactionType: TransactionType.sold),Transactions(transactionId: "134134", transactionAmount: 542, transactionDate: DateTime.now(), transactionType: TransactionType.added),Transactions(transactionId: "134134", transactionAmount: 356, transactionDate: DateTime.now(), transactionType: TransactionType.added),]),
-
-        Post(
+        transactions: [
+          Transactions(
+              transactionId: "124wrq1",
+              transactionAmount: 123,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.sold),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 542,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 356,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+        ]),
+    Post(
         postUrl: "https://i.imgur.com/UnN2xLZ.mp4",
         postPrice: 75,
         postCaption: "Making magic with every moment 💫 #LiveLifeLaughing",
@@ -188,12 +274,26 @@ class Post extends Equatable {
         postId: "8",
         userId: "4",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "124wrq1", transactionAmount: 123, transactionDate: DateTime.now(), transactionType: TransactionType.sold),Transactions(transactionId: "134134", transactionAmount: 542, transactionDate: DateTime.now(), transactionType: TransactionType.added),Transactions(transactionId: "134134", transactionAmount: 356, transactionDate: DateTime.now(), transactionType: TransactionType.added),]),
-
-        Post(
+        transactions: [
+          Transactions(
+              transactionId: "124wrq1",
+              transactionAmount: 123,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.sold),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 542,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 356,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+        ]),
+    Post(
         postUrl: "https://i.imgur.com/NrAGhL6.mp4",
         postPrice: 75,
         postCaption: "Creating a life I love 💕 #LiveLifeHappy",
@@ -203,11 +303,26 @@ class Post extends Equatable {
         postId: "9",
         userId: "5",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "124wrq1", transactionAmount: 123, transactionDate: DateTime.now(), transactionType: TransactionType.sold),Transactions(transactionId: "134134", transactionAmount: 542, transactionDate: DateTime.now(), transactionType: TransactionType.added),Transactions(transactionId: "134134", transactionAmount: 356, transactionDate: DateTime.now(), transactionType: TransactionType.added),]),
-        Post(
+        transactions: [
+          Transactions(
+              transactionId: "124wrq1",
+              transactionAmount: 123,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.sold),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 542,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 356,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+        ]),
+    Post(
         postUrl: "https://i.imgur.com/XTsY4Zb.mp4",
         postPrice: 75,
         postCaption: "Capturing memories, one photo at a time 📸 #KeepExploring",
@@ -217,11 +332,26 @@ class Post extends Equatable {
         postId: "10",
         userId: "5",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "124wrq1", transactionAmount: 123, transactionDate: DateTime.now(), transactionType: TransactionType.sold),Transactions(transactionId: "134134", transactionAmount: 542, transactionDate: DateTime.now(), transactionType: TransactionType.added),Transactions(transactionId: "134134", transactionAmount: 356, transactionDate: DateTime.now(), transactionType: TransactionType.added),]),
-        Post(
+        transactions: [
+          Transactions(
+              transactionId: "124wrq1",
+              transactionAmount: 123,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.sold),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 542,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 356,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+        ]),
+    Post(
         postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
         postPrice: 75,
         postCaption: "Finding joy in the little things 🌼 #TakeTimeToSmellTheRoses",
@@ -231,11 +361,26 @@ class Post extends Equatable {
         postId: "11",
         userId: "6",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "124wrq1", transactionAmount: 123, transactionDate: DateTime.now(), transactionType: TransactionType.sold),Transactions(transactionId: "134134", transactionAmount: 542, transactionDate: DateTime.now(), transactionType: TransactionType.added),Transactions(transactionId: "134134", transactionAmount: 356, transactionDate: DateTime.now(), transactionType: TransactionType.added),]),
-        Post(
+        transactions: [
+          Transactions(
+              transactionId: "124wrq1",
+              transactionAmount: 123,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.sold),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 542,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 356,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+        ]),
+    Post(
         postUrl: "https://i.imgur.com/tbMbPYG.mp4",
         postPrice: 75,
         postCaption: "Life is too precious to not take risks 💪 #TakeChances",
@@ -245,24 +390,30 @@ class Post extends Equatable {
         postId: "12",
         userId: "6",
         postOwner: "2",
-        postThumbnail:
-            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
-        transactions: [Transactions(transactionId: "124wrq1", transactionAmount: 123, transactionDate: DateTime.now(), transactionType: TransactionType.sold),Transactions(transactionId: "134134", transactionAmount: 542, transactionDate: DateTime.now(), transactionType: TransactionType.added),Transactions(transactionId: "134134", transactionAmount: 356, transactionDate: DateTime.now(), transactionType: TransactionType.added),]),
+        transactions: [
+          Transactions(
+              transactionId: "124wrq1",
+              transactionAmount: 123,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.sold),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 542,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+          Transactions(
+              transactionId: "134134",
+              transactionAmount: 356,
+              transactionDate: DateTime.now(),
+              transactionType: TransactionType.added),
+        ]),
   ];
 
   @override
-  List<Object?> get props => [
-        postUrl,
-        postPrice,
-        postCaption,
-        shareableLink,
-        postLikes,
-        postId,
-        userId,
-        postThumbnail,
-        postOwner
-      ];
+  List<Object?> get props =>
+      [postUrl, postPrice, postCaption, shareableLink, postLikes, postId, userId, postThumbnail, postOwner];
 }
 
 enum PostType {

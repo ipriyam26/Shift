@@ -13,7 +13,6 @@ import 'package:shimmer/shimmer.dart';
 import '../model/user.dart';
 
 class UserScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

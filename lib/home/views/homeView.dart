@@ -193,12 +193,59 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 20.h,
           ),
           Text(
             "Past Purchases",
             style: TextStyle(color: Color(0xffB548C6), fontWeight: FontWeight.w700),
           ),
+          SizedBox(
+            height: 10.h,
+          ),
+          Container(
+            height: 185,
+            width: 400,
+            child: ListView.separated(
+                separatorBuilder: (context, index) {
+                  return SizedBox(
+                    height: 10.h,
+                  );
+                },
+                itemCount: 3,
+                scrollDirection: Axis.vertical,
+                itemBuilder: (BuildContext context, int index) {
+                  return Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(1), // Border width
+                        decoration: const BoxDecoration(color: Color(0xffB548C6), shape: BoxShape.circle),
+                        child: ClipOval(
+                          child: SizedBox.fromSize(
+                            size: const Size.fromRadius(25), // Image radius
+                            child: Image.network(userItem[int.parse(postItem[index].userId)].userprofileUrl,
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(userItem[index].userName.toUpperCase(),style: TextStyle(color: Colors.white),),
+                            Text("Profit",style: TextStyle(color: Colors.white),)
+                          ],
+                        ),
+                      ),
+                      Spacer(),
+                      Text('\$${postItem[index].postPrice}',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w700),)
+
+                    ],
+                    // width: 20.h,
+                    // color: Colors.white,
+                  );
+                }),
+          )
         ],
       ),
       //   content: Column(
@@ -586,4 +633,3 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
-

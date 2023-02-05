@@ -24,7 +24,6 @@ class HomeModel extends Equatable {
       isVerified: json['isVerified'],
     );
   }
-  
 
   static List<HomeModel> items = [
     HomeModel(
@@ -35,13 +34,13 @@ class HomeModel extends Equatable {
         isVerified: true),
     HomeModel(
         contentUrl: Post.items.where((item) => item.userId == "2").toList(),
-        userName: "priyamsrivastava",
+        userName: "priyam",
         userprofileUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         userGenere: "Creator",
         isVerified: true),
     HomeModel(
         contentUrl: Post.items.where((item) => item.userId == "3").toList(),
-        userName: "sumrantalreja",
+        userName: "sumran",
         userprofileUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         userGenere: "userGenere",
         isVerified: true),
