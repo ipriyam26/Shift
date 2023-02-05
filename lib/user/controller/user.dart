@@ -25,13 +25,17 @@ class UserController extends GetxController {
 
   static const baseUrl = 'https://icosmic.onrender.com';
 
-  Future<User> fetchUser() async {
-    String url = baseUrl + "/users";
+  Future<User> fetchUser(String id) async {
+    String url = "$baseUrl/users/$id";
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
       // If the request was successful, parse the JSON response into a User object
-      return User.fromJson(json.decode(response.body));
+      var data = json.decode(response.body);
+      print(data);
+      user.value = User.fromJson(data);
+      user.refresh();
+      return user.value;
     } else {
       // If the request was not successful, throw an exception
       throw Exception('Failed to load user');
@@ -42,7 +46,7 @@ class UserController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     super.onInit();
-    fetchUser();
+    fetchUser("5917ac8b347");
     refresh();
   }
 

@@ -38,13 +38,32 @@ class Post extends Equatable {
       postCaption: json['postCaption'],
       postLikes: json['postLikes'],
       shareableLink: json['shareableLink'],
-      postDate: json['postDate'] != null
-          ? DateTime.parse(json['postDate'])
-          : null,
-      postType: json['postType'] != null ? _postTypeFromJson(json['postType']) : null,
+      postDate:
+          json['postDate'] != null ? DateTime.parse(json['postDate']) : null,
+      postType:
+          json['postType'] != null ? _postTypeFromJson(json['postType']) : null,
       postThumbnail: json['postThumbnail'],
-      postOwner: json['postOwner'], transactions: [],
+      postOwner: json['postOwner'],
+      transactions: [],
     );
+  }
+
+// make to json function
+
+  Map<String, dynamic> toJson() {
+    return {
+      "userId": userId,
+      "postUrl": postUrl,
+      "postPrice": postPrice,
+      "postCaption": postCaption,
+      "postLikes": postLikes,
+      "shareableLink": shareableLink,
+      "postDate": postDate!.microsecondsSinceEpoch,
+      "postType": postType.toString(),
+      "postThumbnail": postThumbnail,
+      "postOwner": postOwner,
+      "transactions": transactions!.map((e) => e.toJson()).toList(),
+    };
   }
 
   static PostType? _postTypeFromJson(String postType) {
@@ -58,7 +77,6 @@ class Post extends Equatable {
     }
   }
 
-
   static List<Post> items = const [
     Post(
         postUrl: "https://i.imgur.com/T7Bgiqe.mp4",
@@ -70,7 +88,8 @@ class Post extends Equatable {
         postId: "1",
         userId: "1",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: []),
     Post(
@@ -83,7 +102,8 @@ class Post extends Equatable {
         postId: "1",
         userId: "1",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: []),
     Post(
@@ -96,7 +116,8 @@ class Post extends Equatable {
         postId: "1",
         userId: "1",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: []),
     Post(
@@ -109,7 +130,8 @@ class Post extends Equatable {
         postId: "1",
         userId: "1",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: []),
     Post(
@@ -122,7 +144,8 @@ class Post extends Equatable {
         postId: "1",
         userId: "1",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: []),
     Post(
@@ -135,14 +158,24 @@ class Post extends Equatable {
         postId: "1",
         userId: "1",
         postOwner: "2",
-        postThumbnail: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+        postThumbnail:
+            "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
         postDate: null,
         transactions: []),
   ];
 
   @override
-  List<Object?> get props =>
-      [postUrl, postPrice, postCaption, shareableLink, postLikes, postId, userId, postThumbnail, postOwner];
+  List<Object?> get props => [
+        postUrl,
+        postPrice,
+        postCaption,
+        shareableLink,
+        postLikes,
+        postId,
+        userId,
+        postThumbnail,
+        postOwner
+      ];
 }
 
 enum PostType {

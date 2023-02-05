@@ -1,4 +1,6 @@
 PODS:
+  - credit_card_input_form (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
@@ -19,6 +21,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - credit_card_input_form (from `.symlinks/plugins/credit_card_input_form/ios`)
   - Flutter (from `Flutter`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
@@ -32,6 +35,8 @@ SPEC REPOS:
     - FMDB
 
 EXTERNAL SOURCES:
+  credit_card_input_form:
+    :path: ".symlinks/plugins/credit_card_input_form/ios"
   Flutter:
     :path: Flutter
   image_picker_ios:
@@ -48,6 +53,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/video_player_avfoundation/ios"
 
 SPEC CHECKSUMS:
+  credit_card_input_form: c849da5e6fc6ebf157d84b06077f54d6aa12fae5
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb

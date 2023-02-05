@@ -15,7 +15,6 @@ import 'package:money_goes_brr/home/views/homeView.dart';
 import 'package:money_goes_brr/user/views/edit.dart';
 import 'package:money_goes_brr/widgets/graph-3.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
       builder: (context, a) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: HomeView(),
+          home: Open(),
         );
       },
     );
