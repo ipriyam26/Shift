@@ -6,7 +6,7 @@ import 'package:money_goes_brr/authentication/view/login.dart';
 
 import '../controller/login_controller.dart';
 
-class SignIn extends StatelessWidget {
+class SignUp extends StatelessWidget {
 // put login controller
   final loginController = Get.put(LoginController());
 
@@ -24,10 +24,14 @@ class SignIn extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 150.h),
+
+              SizedBox(height: 40.h,),
+              Image.asset("assets/logo.png"),
+              SizedBox(height : 40.h),
+
 
               Text(
-                "Login",
+                "SignUp",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24.sp,
@@ -123,10 +127,11 @@ class SignIn extends StatelessWidget {
                       textAlign: TextAlign.center,
                       text: const TextSpan(
                         children: <TextSpan>[
-                          TextSpan(text: 'By selecting Signup below, I agree to '),
-                          TextSpan(
-                              text: 'Terms & \ncondition.',
-                              style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xfff6800D))),
+
+                           TextSpan(text: 'By selecting Signup below, I agree to '),
+
+                           TextSpan(text: 'Terms & \ncondition.', style:  TextStyle(fontWeight: FontWeight.bold,color: Color(0xffB548C6))),
+
                         ],
                       ),
                     ),
@@ -172,11 +177,18 @@ class SignIn extends StatelessWidget {
                     height: 48.h,
                     width: 304.w,
                     decoration: BoxDecoration(
-                        color: const Color(0xffF6800D), borderRadius: BorderRadius.all(Radius.circular(8.sp))),
+
+                        color: const Color(0xffB548C6),
+                        borderRadius:
+                        BorderRadius.all(Radius.circular(8.sp))),
                     child: Center(
                       child: Text(
-                        'Login',
-                        style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600, color: Colors.white),
+                        'Sign Up',
+                        style: TextStyle(
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+
                       ),
                     ),
                   ),
@@ -267,10 +279,9 @@ class SignIn extends StatelessWidget {
                       Get.to(Login());
                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
                     },
-                    child: Text(
-                      "Sign In",
-                      style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14.sp, color: const Color(0xffF6800D)),
-                    ),
+
+                    child: Text("Sign Up",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14.sp,color: const Color(0xffF6800D)),),
+
                   )
                 ],
               ),

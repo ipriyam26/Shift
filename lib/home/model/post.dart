@@ -10,7 +10,7 @@ class Post extends Equatable {
   final int postLikes;
   final String shareableLink;
   final DateTime? postDate;
-  final PostType postType;
+  final PostType? postType;
   final String postThumbnail;
   final String? postOwner;
   final List<Transactions>? transactions;
@@ -29,6 +29,35 @@ class Post extends Equatable {
     required this.postType,
     required this.postDate,
   });
+  factory Post.fromJson(Map<String, dynamic> json) {
+    return Post(
+      postId: json['postId'],
+      userId: json['userId'],
+      postUrl: json['postUrl'],
+      postPrice: json['postPrice'].toDouble(),
+      postCaption: json['postCaption'],
+      postLikes: json['postLikes'],
+      shareableLink: json['shareableLink'],
+      postDate: json['postDate'] != null
+          ? DateTime.parse(json['postDate'])
+          : null,
+      postType: json['postType'] != null ? _postTypeFromJson(json['postType']) : null,
+      postThumbnail: json['postThumbnail'],
+      postOwner: json['postOwner'], transactions: [],
+    );
+  }
+
+  static PostType? _postTypeFromJson(String postType) {
+    switch (postType) {
+      case 'Image':
+        return PostType.image;
+      case 'Video':
+        return PostType.video;
+      default:
+        return null;
+    }
+  }
+
 
   static List<Post> items = const [
     Post(
