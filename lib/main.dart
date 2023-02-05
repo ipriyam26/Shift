@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
       builder: (context, a) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: HomeView(),
+          home: UserScreen(),
+
         );
       },
     );

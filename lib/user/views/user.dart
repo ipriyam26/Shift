@@ -7,7 +7,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:money_goes_brr/home/model/post.dart';
 import 'package:money_goes_brr/user/controller/user.dart';
-import 'package:money_goes_brr/user/views/profit.dart';
+import 'package:money_goes_brr/user/views/add_money.dart';
+import 'package:money_goes_brr/user/views/profit.dart' as profit;
 import 'package:shimmer/shimmer.dart';
 
 import '../model/user.dart';
@@ -18,7 +19,13 @@ class UserScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: const Color(0xff282424),
-        child: Column(children: [Header(), PurchaseDetails(), BalanceProfit(), const Line(), const TabViewWidget()]),
+        child: Column(children: [
+          Header(),
+          PurchaseDetails(),
+          BalanceProfit(),
+          const Line(),
+          const TabViewWidget(),
+        ]),
       ),
     );
   }
@@ -38,7 +45,9 @@ class TabViewWidget extends StatelessWidget {
           child: Column(
             children: [
               ButtonsTabBar(
-                decoration: BoxDecoration(color: const Color(0xffB548C6), borderRadius: BorderRadius.circular(12.r)),
+                decoration: BoxDecoration(
+                    color: const Color(0xffB548C6),
+                    borderRadius: BorderRadius.circular(12.r)),
                 unselectedBackgroundColor: Colors.transparent,
                 unselectedLabelStyle: GoogleFonts.roboto(
                   color: Colors.white,
@@ -50,7 +59,8 @@ class TabViewWidget extends StatelessWidget {
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ),
-                contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
                 buttonMargin: EdgeInsets.symmetric(
                   horizontal: 10.w,
                 ),
@@ -110,8 +120,9 @@ class TabView extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Container(
               padding: EdgeInsets.all(5.w),
-              decoration:
-                  const BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.all(Radius.circular(15))),
+              decoration: const BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
               child: Stack(alignment: Alignment.bottomRight, children: [
                 ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -130,7 +141,8 @@ class TabView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
                 if (data[index].postType == PostType.video)
@@ -154,7 +166,8 @@ class TabView extends StatelessWidget {
                       margin: EdgeInsets.only(right: 4.w, bottom: 7.h),
                       alignment: Alignment.center,
                       decoration: const BoxDecoration(
-                          color: Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(15))),
+                          color: Color(0xffB548C6),
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
                       child: Text('\$${data[index].postPrice}',
                           style: GoogleFonts.roboto(
                             color: Colors.white,
@@ -212,17 +225,15 @@ class BalanceProfit extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            InkWell(
-              onTap: () {},
-              splashColor: const Color(0xffB548C6),
-              child: ClickableDetails(
+            GetX<UserController>(builder: (userController) {
+              return ClickableDetails(
                 cost: userController.user.value.currentBalance.balance,
                 title: "Balance",
-              ),
-            ),
+              );
+            }),
             InkWell(
               onTap: () {
-                // Get.to(() => Profit());
+                Get.to(() => profit.Profit());
               },
               child: ClickableDetails(
                 title: "Profit",
@@ -289,31 +300,37 @@ class PurchaseDetails extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            CurrentlyOwned(count: controller.user.value.currentOwned.currentOwnedItems.length),
-            TotalPurchases(count: controller.user.value.history.historyItems.length),
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                ClipOval(
-                  child: SizedBox(
-                    height: 60.h,
-                    width: 60.w,
-                    child: Image.asset(
-                      'assets/coin.png',
-                      fit: BoxFit.cover,
+            CurrentlyOwned(
+                count: controller
+                    .user.value.currentOwned.currentOwnedItems.length),
+            TotalPurchases(
+                count: controller.user.value.history.historyItems.length),
+            InkWell(
+              onTap: () => Get.to(() => AddMoney()),
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  ClipOval(
+                    child: SizedBox(
+                      height: 60.h,
+                      width: 60.w,
+                      child: Image.asset(
+                        'assets/coin.png',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: -10,
-                  right: -10,
-                  child: Icon(
-                    Icons.add,
-                    color: Colors.white,
-                    size: 30.sp,
-                  ),
-                )
-              ],
+                  Positioned(
+                    bottom: -10,
+                    right: -10,
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 30.sp,
+                    ),
+                  )
+                ],
+              ),
             )
           ],
         ));
@@ -489,6 +506,7 @@ class ProfilePicture extends StatelessWidget {
             return CachedNetworkImage(
               height: 82.h,
               width: 82.w,
+              fit: BoxFit.cover,
               imageUrl: controller.user.value.imageUrl,
               placeholder: (context, url) => const CircularProgressIndicator(),
               errorWidget: (context, url, error) => const Icon(Icons.error),
