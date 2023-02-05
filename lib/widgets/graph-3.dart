@@ -41,7 +41,6 @@ class _LineChartSample2State extends State<LineChartSample2> {
   }
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-
     var style = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 15,
@@ -53,16 +52,16 @@ class _LineChartSample2State extends State<LineChartSample2> {
     Widget text;
     switch (value.toInt()) {
       case 2:
-        text =  Text('12:00', style: style);
+        text = Text('12:00', style: style);
         break;
       case 5:
-        text =  Text('13:00', style: style);
+        text = Text('13:00', style: style);
         break;
       case 8:
-        text =  Text('14:00', style: style);
+        text = Text('14:00', style: style);
         break;
       default:
-        text =  Text('', style: style);
+        text = Text('', style: style);
         break;
     }
 
@@ -90,7 +89,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
         break;
       case 5:
         text = '50k';
-        break;  
+        break;
       default:
         return Container();
     }
