@@ -4,6 +4,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:money_goes_brr/add/views/open.dart';
 import 'package:money_goes_brr/home/views/homeView.dart';
 import 'package:money_goes_brr/user/views/edit.dart';
+import 'package:money_goes_brr/widgets/graph-3.dart';
 
 void main() {
   runApp(const MyApp());
