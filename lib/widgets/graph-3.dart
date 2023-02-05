@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LineChartSample2 extends StatefulWidget {
   const LineChartSample2({super.key});
@@ -35,30 +36,31 @@ class _LineChartSample2State extends State<LineChartSample2> {
             ),
           ),
         ),
-
       ],
     );
   }
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
+    var style = TextStyle(
       fontWeight: FontWeight.bold,
-      fontSize: 16,
-      color: Colors.white
+      fontSize: 15,
+      fontFamily: GoogleFonts.roboto().fontFamily,
+      color: Colors.grey,
+      decoration: TextDecoration.none,
     );
     Widget text;
     switch (value.toInt()) {
       case 2:
-        text = const Text('12:0', style: style);
+        text =  Text('12:00', style: style);
         break;
       case 5:
-        text = const Text('13:0', style: style);
+        text =  Text('13:00', style: style);
         break;
       case 8:
-        text = const Text('14:0', style: style);
+        text =  Text('14:00', style: style);
         break;
       default:
-        text = const Text('', style: style);
+        text =  Text('', style: style);
         break;
     }
 
@@ -69,9 +71,12 @@ class _LineChartSample2State extends State<LineChartSample2> {
   }
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
+    var style = TextStyle(
       fontWeight: FontWeight.bold,
       fontSize: 15,
+      fontFamily: GoogleFonts.roboto().fontFamily,
+      color: Colors.grey,
+      decoration: TextDecoration.none,
     );
     String text;
     switch (value.toInt()) {
@@ -83,7 +88,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
         break;
       case 5:
         text = '50k';
-        break;
+        break;  
       default:
         return Container();
     }
