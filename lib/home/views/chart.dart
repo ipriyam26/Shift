@@ -2,7 +2,6 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:money_goes_brr/home/controller/chart.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Chart extends StatelessWidget {
   Chart({super.key});
@@ -15,8 +14,6 @@ class Chart extends StatelessWidget {
       LineChartData(
           // read about it in the LineChartData section
           ),
-
-          
     ));
   }
 }
