@@ -10,8 +10,9 @@ import 'package:money_goes_brr/user/controller/user.dart';
 import 'package:money_goes_brr/user/views/profit.dart';
 import 'package:shimmer/shimmer.dart';
 
-class User extends StatelessWidget {
-  const User({super.key});
+import '../model/user.dart';
+
+class UserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -234,7 +235,7 @@ class BalanceProfit extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Get.to(() => Profit());
+                // Get.to(() => Profit());
               },
               child: ClickableDetails(
                 title: "Profit",

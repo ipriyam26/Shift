@@ -25,6 +25,21 @@ class User {
     required this.currentOwned,
     required this.saved,
   });
+
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'],
+      name: json['name'],
+      email: json['email'],
+      caption: json['caption'],
+      imageUrl: json['imageUrl'],
+      profit: Profit.fromJson(json['profit']),
+      currentBalance: Balance.fromJson(json['currentBalance']),
+      history: History.fromJson(json['history']),
+      currentOwned: CurrentOwned.fromJson(json['currentOwned']),
+      saved: Saved.fromJson(json['saved']),
+    );
+  }
 }
 
 class Saved {
@@ -33,7 +48,18 @@ class Saved {
   const Saved({
     required this.savedItems,
   });
+
+  factory Saved.fromJson(Map<String, dynamic> json) {
+    List<Post> savedItems = [];
+    for (var item in json['savedItems']) {
+      savedItems.add(Post.fromJson(item));
+    }
+    return Saved(
+      savedItems: savedItems,
+    );
+  }
 }
+
 
 class CurrentOwned {
   final List<Post> currentOwnedItems;
@@ -41,6 +67,15 @@ class CurrentOwned {
   const CurrentOwned({
     required this.currentOwnedItems,
   });
+  factory CurrentOwned.fromJson(Map<String, dynamic> json) {
+    List<Post> currentOwnedItems = [];
+    for (var item in json['currentOwnedItems']) {
+      currentOwnedItems.add(Post.fromJson(item));
+    }
+    return CurrentOwned(
+      currentOwnedItems: currentOwnedItems,
+    );
+  }
 }
 class History {
   final List<Post> historyItems;
@@ -48,6 +83,13 @@ class History {
   const History({
     required this.historyItems,
   });
+  factory History.fromJson(List<dynamic> json) {
+    List<Post> history = [];
+    for (var item in json) {
+      history.add(Post.fromJson(item));
+    }
+    return History(historyItems: history);
+  }
 }
 
 class Balance {
@@ -58,6 +100,15 @@ class Balance {
     required this.balance,
     required this.transactions,
   });
+
+  factory Balance.fromJson(Map<String, dynamic> json) {
+    return Balance(
+      balance: json['balance'].toDouble(),
+      transactions: (json['transactions'] as List)
+          .map((e) => Transactions.fromJson(e))
+          .toList(),
+    );
+  }
 }
 
 class PostTransaction {
@@ -72,6 +123,14 @@ class PostTransaction {
     required this.sale,
     required this.isSold,
   });
+  factory PostTransaction.fromJson(Map<String, dynamic> json) {
+    return PostTransaction(
+      post: Post.fromJson(json['post']),
+      purchase: Transactions.fromJson(json['purchase']),
+      sale: Transactions.fromJson(json['sale']),
+      isSold: json['isSold'],
+    );
+  }
 }
 
 class Transactions {
@@ -87,7 +146,30 @@ class Transactions {
     required this.transactionDate,
     required this.transactionType,
   });
+  factory Transactions.fromJson(Map<String, dynamic> json) {
+    return Transactions(
+      transactionId: json['transactionId'],
+      transactionAmount: json['transactionAmount'].toDouble(),
+      transactionDate: DateTime.parse(json['transactionDate']),
+      transactionType: _transactionTypeFromJson(json['transactionType']),
+    );
+  }
+
+  static TransactionType _transactionTypeFromJson(String transactionType) {
+    switch (transactionType) {
+      case 'purchase':
+        return TransactionType.added;
+      case 'sale':
+        return TransactionType.sold;
+      case 'bought':
+        return TransactionType.bought;
+      default:
+        return TransactionType.cashedOut;
+    }
+  }
+
 }
+
 
 enum TransactionType { added, bought, sold, cashedOut }
 
@@ -100,4 +182,13 @@ class Profit {
     required this.profit,
     required this.transactions,
   });
+  factory Profit.fromJson(Map<String, dynamic> json) {
+    return Profit(
+      profit: json['profit'].toDouble(),
+      transactions: (json['transactions'] as List)
+          .map((transaction) => PostTransaction.fromJson(transaction))
+          .toList(),
+    );
+  }
+
 }
