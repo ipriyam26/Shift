@@ -21,24 +21,16 @@ class EditScreen extends StatelessWidget {
             children: [
               Text(
                 "Cancel",
-                style: TextStyle(
-                    fontFamily: GoogleFonts.roboto().fontFamily,
-                    color: Colors.white,
-                    fontSize: 16.sp),
+                style: TextStyle(fontFamily: GoogleFonts.roboto().fontFamily, color: Colors.white, fontSize: 16.sp),
               ),
               Text(
                 "Edit Profile",
-                style: TextStyle(
-                    fontFamily: GoogleFonts.roboto().fontFamily,
-                    color: Colors.white,
-                    fontSize: 16.sp),
+                style: TextStyle(fontFamily: GoogleFonts.roboto().fontFamily, color: Colors.white, fontSize: 16.sp),
               ),
               Text(
                 "Done",
                 style: TextStyle(
-                    fontFamily: GoogleFonts.roboto().fontFamily,
-                    color: const Color(0xffB548C6),
-                    fontSize: 16.sp),
+                    fontFamily: GoogleFonts.roboto().fontFamily, color: const Color(0xffB548C6), fontSize: 16.sp),
               )
             ],
           )),
@@ -56,8 +48,7 @@ class EditScreen extends StatelessWidget {
                   ),
                   CircleAvatar(
                     radius: 40.sp,
-                    backgroundImage:
-                        NetworkImage(userController.user.value.imageUrl),
+                    backgroundImage: NetworkImage(userController.user.value.imageUrl),
                   ),
                   SizedBox(
                     height: 15.h,
@@ -98,8 +89,7 @@ class EditScreen extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  EditRow(
-                      feild: 'Email', info: userController.user.value.email),
+                  EditRow(feild: 'Email', info: userController.user.value.email),
                   const Divider(
                     color: Colors.black,
                     thickness: 0.2,
@@ -134,12 +124,7 @@ class EditScreen extends StatelessWidget {
 }
 
 class EditRow extends StatelessWidget {
-  EditRow(
-      {Key? key,
-      required this.feild,
-      this.info = '',
-      this.isbold = false,
-      this.weight = FontWeight.bold})
+  EditRow({Key? key, required this.feild, this.info = '', this.isbold = false, this.weight = FontWeight.bold})
       : super(key: key);
 
   final String feild;

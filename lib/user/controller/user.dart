@@ -151,8 +151,7 @@ class UserController extends GetxController {
 // for each post transaction find profit or loss and add it all up
 
     var profit = postTransactions.fold(0.0, (previousValue, element) {
-      var profit =
-          element.sale.transactionAmount - element.purchase.transactionAmount;
+      var profit = element.sale.transactionAmount - element.purchase.transactionAmount;
       return previousValue + profit;
     });
     print("Profit $profit");
@@ -179,12 +178,10 @@ class UserController extends GetxController {
       return null;
     }
     var _imagepicker = ImagePicker();
-    final pickedFile = await _imagepicker.pickImage(
-        source: ImageSource.gallery, imageQuality: 25);
+    final pickedFile = await _imagepicker.pickImage(source: ImageSource.gallery, imageQuality: 25);
 
     if (pickedFile == null) {
-      Get.snackbar("Error", "No image selected",
-          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
+      Get.snackbar("Error", "No image selected", snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.orange);
       return null;
     }
     updatedImage.value = File(pickedFile.path);
@@ -193,8 +190,7 @@ class UserController extends GetxController {
   }
 
   Future<String> uploadImage(File image) async {
-    var request =
-        http.MultipartRequest(Constants().post, Uri.parse(Constants().posturl));
+    var request = http.MultipartRequest(Constants().post, Uri.parse(Constants().posturl));
     request.headers["Authorization"] = Constants().clientID;
     var file = await http.MultipartFile.fromPath(
       "image",
@@ -202,8 +198,7 @@ class UserController extends GetxController {
     );
     request.files.add(file);
     var response = await request.send();
-    var result = await http.Response.fromStream(response)
-        .then((value) => jsonDecode(value.body));
+    var result = await http.Response.fromStream(response).then((value) => jsonDecode(value.body));
     var data = result["data"];
     // print(Constants().baseurl + data["id"] + Constants().ext);
 
