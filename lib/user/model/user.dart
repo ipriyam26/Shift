@@ -48,7 +48,7 @@ class Saved {
     required this.savedItems,
   });
 
-  factory Saved.fromJson(Map<String, dynamic> json) {
+  factory Saved.fromJson(Map<String, dynamic>? json) {
     List<Post> savedItems = [];
     if (json == null) {
       return const Saved(savedItems: []);
