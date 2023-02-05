@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:money_goes_brr/home/model/post.dart';
 
 import '../widgets/video_player_item.dart';
