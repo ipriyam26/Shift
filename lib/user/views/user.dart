@@ -19,13 +19,7 @@ class UserScreen extends StatelessWidget {
     return Scaffold(
       body: Container(
         color: const Color(0xff282424),
-        child: Column(children: [
-          Header(),
-          PurchaseDetails(),
-          BalanceProfit(),
-          const Line(),
-          const TabViewWidget()
-        ]),
+        child: Column(children: [Header(), PurchaseDetails(), BalanceProfit(), const Line(), const TabViewWidget()]),
       ),
     );
   }
@@ -45,9 +39,7 @@ class TabViewWidget extends StatelessWidget {
           child: Column(
             children: [
               ButtonsTabBar(
-                decoration: BoxDecoration(
-                    color: const Color(0xffB548C6),
-                    borderRadius: BorderRadius.circular(12.r)),
+                decoration: BoxDecoration(color: const Color(0xffB548C6), borderRadius: BorderRadius.circular(12.r)),
                 unselectedBackgroundColor: Colors.transparent,
                 unselectedLabelStyle: GoogleFonts.roboto(
                   color: Colors.white,
@@ -59,8 +51,7 @@ class TabViewWidget extends StatelessWidget {
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                 ),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
+                contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
                 buttonMargin: EdgeInsets.symmetric(
                   horizontal: 10.w,
                 ),
@@ -120,9 +111,8 @@ class TabView extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Container(
               padding: EdgeInsets.all(5.w),
-              decoration: const BoxDecoration(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              decoration:
+                  const BoxDecoration(color: Colors.transparent, borderRadius: BorderRadius.all(Radius.circular(15))),
               child: Stack(alignment: Alignment.bottomRight, children: [
                 ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -141,8 +131,7 @@ class TabView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
                 ),
                 if (data[index].postType == PostType.video)
@@ -166,8 +155,7 @@ class TabView extends StatelessWidget {
                       margin: EdgeInsets.only(right: 4.w, bottom: 7.h),
                       alignment: Alignment.center,
                       decoration: const BoxDecoration(
-                          color: Color(0xffB548C6),
-                          borderRadius: BorderRadius.all(Radius.circular(15))),
+                          color: Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(15))),
                       child: Text('\$${data[index].postPrice}',
                           style: GoogleFonts.roboto(
                             color: Colors.white,
@@ -302,11 +290,8 @@ class PurchaseDetails extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            CurrentlyOwned(
-                count: controller
-                    .user.value.currentOwned.currentOwnedItems.length),
-            TotalPurchases(
-                count: controller.user.value.history.historyItems.length),
+            CurrentlyOwned(count: controller.user.value.currentOwned.currentOwnedItems.length),
+            TotalPurchases(count: controller.user.value.history.historyItems.length),
             Stack(
               clipBehavior: Clip.none,
               children: [

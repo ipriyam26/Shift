@@ -18,7 +18,6 @@ class Login extends StatelessWidget {
     GlobalKey<FormState> form = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: Colors.black,
-
       body: Container(
         padding: EdgeInsets.all(30.sp),
         child: SingleChildScrollView(
@@ -29,6 +28,7 @@ class Login extends StatelessWidget {
 
               Image.asset("assets/logo.png"),
               SizedBox(height : 40.h),
+
 
               Text(
                 "Login",
@@ -57,7 +57,6 @@ class Login extends StatelessWidget {
                     return null;
                   },
                   decoration: InputDecoration(
-
                     hintText: 'Email or Username ',
                     hintStyle: TextStyle(
                       color: const Color(0xff707070),
@@ -123,9 +122,7 @@ class Login extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   GestureDetector(
-                    onTap: (){
-
-                    },
+                    onTap: () {},
                     child: Text(
                       "Forgot Password?",
                       style: TextStyle(
@@ -135,7 +132,6 @@ class Login extends StatelessWidget {
                       ),
                     ),
                   ),
-
                 ],
               ),
               SizedBox(height: 20.h),
@@ -177,16 +173,15 @@ class Login extends StatelessWidget {
                     height: 48.h,
                     width: 304.w,
                     decoration: BoxDecoration(
+
                         color: const Color(0xffB548C6),
                         borderRadius:
                         BorderRadius.all(Radius.circular(8.sp))),
+
                     child: Center(
                       child: Text(
                         'Login',
-                        style: TextStyle(
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                        style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600, color: Colors.white),
                       ),
                     ),
                   ),
@@ -227,7 +222,10 @@ class Login extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Continue With :",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 17.sp,color: Colors.white),)
+                  Text(
+                    "Continue With :",
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17.sp, color: Colors.white),
+                  )
                 ],
               ),
               SizedBox(height: 20.h),
@@ -238,57 +236,52 @@ class Login extends StatelessWidget {
                   Container(
                     height: 44.h,
                     width: 44.w,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(8.sp))),
+                    decoration:
+                        BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(8.sp))),
                     child: Image.asset("assets/apple.png"),
-
                   ),
                   Container(
                     height: 44.h,
                     width: 44.w,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(8.sp))),
+                    decoration:
+                        BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(8.sp))),
                     child: Image.asset("assets/google.png"),
-
                   ),
                   Container(
                     height: 44.h,
                     width: 44.w,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius:
-                        BorderRadius.all(Radius.circular(8.sp))),
+                    decoration:
+                        BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(8.sp))),
                     child: Image.asset("assets/fb.png"),
-
                   ),
-
                 ],
               ),
               SizedBox(height: 50.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Don't have an account?",style: TextStyle(fontWeight: FontWeight.w400,fontSize: 14.sp,color: Colors.white),),
-                  SizedBox(width: 5.w,),
+                  Text(
+                    "Don't have an account?",
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp, color: Colors.white),
+                  ),
+                  SizedBox(
+                    width: 5.w,
+                  ),
                   GestureDetector(
+
                     onTap: (){
                       Get.to(SignUp());
                       // Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp()));
                     },
                     child: Text("Sign Up",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 14.sp,color: const Color(0xffB548C6)),),
+
                   )
                 ],
               ),
-
             ],
           ),
         ),
       ),
-
     );
   }
 }
@@ -297,10 +290,11 @@ class PasswordTextField extends StatelessWidget {
   final bool obscureText;
   final void Function(bool) onObscureTextToggled;
 
-  const PasswordTextField({super.key,
+  const PasswordTextField({
+    super.key,
     required this.obscureText,
     required this.onObscureTextToggled,
-  }) ;
+  });
 
   @override
   Widget build(BuildContext context) {
