@@ -31,9 +31,13 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, a) {
         return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: UserScreen(),
-        );
+            debugShowCheckedModeBanner: false,
+            home: PageView(
+              children: [
+                HomeView(),
+                UserScreen(),
+              ],
+            ));
       },
     );
   }

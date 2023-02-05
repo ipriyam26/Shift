@@ -212,17 +212,17 @@ class Transactions {
 enum TransactionType { added, bought, sold, cashedOut }
 
 class Profit {
-  final double profit;
-  final List<PostTransaction> transactions;
+   double profit;
+   List<PostTransaction> transactions;
 // transactions is a list of transactions that are related to profit, like buying and selling items and not cashing out or adding money
 
-  const Profit({
+   Profit({
     required this.profit,
     required this.transactions,
   });
   factory Profit.fromJson(Map<String, dynamic>? json) {
     return json == null
-        ? const Profit(profit: 0.0, transactions: [])
+        ?  Profit(profit: 0.0, transactions: [])
         : Profit(
             profit: json['profit'].toDouble(),
             transactions: (json['transactions'] as List)

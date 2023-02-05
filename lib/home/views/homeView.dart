@@ -27,64 +27,183 @@ class _HomeViewState extends State<HomeView> {
   AddController addController = Get.put(AddController());
 
   Widget buildPopupDialog2(BuildContext context, int index) {
+    var newPrice = 1.2 * postItem[index].postPrice;
+    var newCaption = postItem[index].postCaption;
     return AlertDialog(
+      contentPadding: EdgeInsets.all(8.w),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
-      backgroundColor: const Color(0xff252836),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextFormField(
-            initialValue: postItem[index].postCaption,
-            // controller: myController,
-          ),
-          TextFormField(
-            initialValue: postItem[index].postCaption,
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 32.h,
-                  width: 65.w,
-                  decoration: const BoxDecoration(
-                      color: Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(12))),
-                  child: const Center(
-                      child: Text(
-                    "YES",
-                    style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
-                  )),
+      backgroundColor: const Color(0xff282424),
+      content: Container(
+        width: 335.w,
+        height: 292.h,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              margin: EdgeInsets.only(bottom: 32.h),
+              child: Text(
+                "Add Details",
+                style: GoogleFonts.inter(
+                  color: Colors.white,
+                  fontSize: 15.sp,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-              const SizedBox(
-                width: 33,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  height: 32.h,
-                  width: 65.w,
-                  decoration: const BoxDecoration(
-                      color: Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(12))),
-                  child: const Center(
-                      child: Text(
-                    "NO",
-                    style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
-                  )),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Caption",
+                      style: GoogleFonts.inter(
+                        color: Colors.white,
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Container(
+                      width: 220.w,
+                      child: TextFormField(
+                        maxLines: 2,
+
+                        style: const TextStyle(color: Colors.white),
+                        initialValue: newCaption,
+                        onChanged: (value) {
+                          newCaption = value;
+                        },
+                        // controller: myController,
+                      ),
+                    ),
+                  ],
                 ),
-              )
-            ],
-          )
-        ],
+                Container(
+                  margin: EdgeInsets.only(top: 10.h),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Add Price Tag",
+                          style: GoogleFonts.roboto(
+                            color: Colors.white,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Container(
+                            height: 52.h,
+                            // color: Colors.white,
+                            margin: EdgeInsets.only(top: 14.h),
+
+                            // this container contains image of coin in left side and stacked on a text field of grey color to enter amount of coin
+                            child: Stack(
+                              children: [
+                                Container(
+                                  height: 52.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8.r),
+                                    color: const Color(0xff252836),
+                                  ),
+                                  child: TextFormField(
+                                    maxLines: 1,
+                                    initialValue: newPrice.toString(),
+                                    onChanged: (value) {
+                                      newPrice = double.parse(value);
+                                    },
+                                    keyboardType: TextInputType.number,
+                                    cursorColor: Colors.white,
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 24.sp),
+                                    decoration: InputDecoration(
+                                        // set offest of text field to right side
+                                        contentPadding: EdgeInsets.only(
+                                            left: 70.w, top: 10.h),
+
+                                        // active border color
+                                        focusedBorder: InputBorder.none,
+                                        // normal border color also white
+                                        enabledBorder: InputBorder.none,
+                                        border: InputBorder.none),
+                                  ),
+                                ),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.r),
+                                  child: Image.asset(
+                                    "assets/coin.png",
+                                    height: 52.h,
+                                    width: 52.w,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ],
+                            ))
+                      ]),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        userController.buyItem(postItem[index]);
+// remove item from list
+                        postItem.removeAt(index);
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: 32.h,
+                        width: 65.w,
+                        decoration: const BoxDecoration(
+                            color: Color(0xffB548C6),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12))),
+                        child: const Center(
+                            child: Text(
+                          "YES",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                        )),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 33,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        height: 32.h,
+                        width: 65.w,
+                        decoration: const BoxDecoration(
+                            color: Color(0xffB548C6),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12))),
+                        child: const Center(
+                            child: Text(
+                          "NO",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                        )),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -148,7 +267,10 @@ class _HomeViewState extends State<HomeView> {
                 child: const Text(
                   "Are you sure you want to buy this?",
                   maxLines: 2,
-                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700),
                   textAlign: TextAlign.center,
                 )),
             Container(
@@ -163,18 +285,23 @@ class _HomeViewState extends State<HomeView> {
                     Navigator.pop(context);
                     showDialog(
                       context: context,
-                      builder: (BuildContext context) => buildPopupDialog2(context, index),
+                      builder: (BuildContext context) =>
+                          buildPopupDialog2(context, index),
                     );
                   },
                   child: Container(
                     height: 32.h,
                     width: 65.w,
                     decoration: const BoxDecoration(
-                        color: Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(12))),
+                        color: Color(0xffB548C6),
+                        borderRadius: BorderRadius.all(Radius.circular(12))),
                     child: const Center(
                         child: Text(
                       "YES",
-                      style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
                     )),
                   ),
                 ),
@@ -189,11 +316,15 @@ class _HomeViewState extends State<HomeView> {
                     height: 32.h,
                     width: 65.w,
                     decoration: const BoxDecoration(
-                        color: Color(0xffB548C6), borderRadius: BorderRadius.all(Radius.circular(12))),
+                        color: Color(0xffB548C6),
+                        borderRadius: BorderRadius.all(Radius.circular(12))),
                     child: const Center(
                         child: Text(
                       "NO",
-                      style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500),
                     )),
                   ),
                 )
@@ -231,11 +362,14 @@ class _HomeViewState extends State<HomeView> {
                       children: [
                         Container(
                           padding: const EdgeInsets.all(2), // Border width
-                          decoration: const BoxDecoration(color: Color(0xffF6800D), shape: BoxShape.circle),
+                          decoration: const BoxDecoration(
+                              color: Color(0xffF6800D), shape: BoxShape.circle),
                           child: ClipOval(
                             child: SizedBox.fromSize(
                               size: const Size.fromRadius(35), // Image radius
-                              child: Image.network(userItem[int.parse(postItem[index].userId)].userprofileUrl,
+                              child: Image.network(
+                                  userItem[int.parse(postItem[index].userId)]
+                                      .userprofileUrl,
                                   fit: BoxFit.cover),
                             ),
                           ),
@@ -251,15 +385,23 @@ class _HomeViewState extends State<HomeView> {
                               height: 10.h,
                             ),
                             Text(
-                              userItem[int.parse(postItem[index].userId)].userName,
-                              style: const TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w700),
+                              userItem[int.parse(postItem[index].userId)]
+                                  .userName,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w700),
                             ),
                             SizedBox(
                               height: 5.h,
                             ),
                             Text(
-                              userItem[int.parse(postItem[index].userId)].userGenere,
-                              style: const TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
+                              userItem[int.parse(postItem[index].userId)]
+                                  .userGenere,
+                              style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
@@ -287,7 +429,8 @@ class _HomeViewState extends State<HomeView> {
                     child: Align(
                       alignment: Alignment.bottomCenter,
                       child: Text(postItem[index].postCaption as String,
-                          style: const TextStyle(color: Colors.black, fontSize: 20)),
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 20)),
                     ),
                   ),
                   Padding(
@@ -298,7 +441,9 @@ class _HomeViewState extends State<HomeView> {
                         width: 315.w,
                         height: 74.h,
                         decoration: const BoxDecoration(
-                            color: Color(0xff252836), borderRadius: BorderRadius.all(Radius.circular(20))),
+                            color: Color(0xff252836),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
                         child: Padding(
                           padding: const EdgeInsets.only(left: 20, right: 10),
                           child: Row(
@@ -307,7 +452,8 @@ class _HomeViewState extends State<HomeView> {
                                 onTap: () {
                                   showDialog(
                                     context: context,
-                                    builder: (BuildContext context) => _buildPopupDialog(context, index),
+                                    builder: (BuildContext context) =>
+                                        _buildPopupDialog(context, index),
                                   );
                                 },
                                 child: Stack(
@@ -318,17 +464,20 @@ class _HomeViewState extends State<HomeView> {
                                     Container(
                                       height: 32.h,
                                       width: 65.w,
-                                      margin: EdgeInsets.only(right: 4.w, bottom: 7.h),
+                                      margin: EdgeInsets.only(
+                                          right: 4.w, bottom: 7.h),
                                       alignment: Alignment.center,
                                       decoration: const BoxDecoration(
                                           color: Color(0xffB548C6),
-                                          borderRadius: BorderRadius.all(Radius.circular(15))),
-                                      child: Text('${postItem[index].postPrice}',
-                                          style: GoogleFonts.roboto(
-                                            color: Colors.white,
-                                            fontSize: 14.sp,
-                                            fontWeight: FontWeight.w500,
-                                          )),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(15))),
+                                      child:
+                                          Text('${postItem[index].postPrice}',
+                                              style: GoogleFonts.roboto(
+                                                color: Colors.white,
+                                                fontSize: 14.sp,
+                                                fontWeight: FontWeight.w500,
+                                              )),
                                     ),
                                     Positioned(
                                       left: -6.w,
@@ -370,9 +519,9 @@ class _HomeViewState extends State<HomeView> {
                               GestureDetector(
                                   onTap: () {},
                                   child: Image(
-                                    height: 24.32,
-                                    width: 16.25,
-                                    image: AssetImage("assets/save.png"))),
+                                      height: 24.32,
+                                      width: 16.25,
+                                      image: AssetImage("assets/save.png"))),
                             ],
                           ),
                         ),

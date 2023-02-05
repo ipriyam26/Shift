@@ -17,7 +17,10 @@ class BalanceScreen extends StatelessWidget {
               ),
               Text(
                 "Balance",
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 22.sp, color: Colors.white),
+                style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 22.sp,
+                    color: Colors.white),
               ),
               SizedBox(height: 20.h),
               Row(
@@ -145,7 +148,10 @@ class BalanceScreen extends StatelessWidget {
                       child: Center(
                           child: Text(
                         "456₹ ",
-                        style: TextStyle(color: Colors.white, fontSize: 20.sp, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.sp,
+                            fontWeight: FontWeight.w600),
                       )),
                     ),
                   )
@@ -174,7 +180,10 @@ class BalanceScreen extends StatelessWidget {
         ),
         Text(
           title,
-          style: TextStyle(fontWeight: FontWeight.w500, fontSize: 12.sp, color: Colors.white),
+          style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 12.sp,
+              color: Colors.white),
         )
       ],
     );
@@ -257,7 +266,10 @@ class PaymentRow extends StatelessWidget {
                       ),
                       Text(
                         subtitle,
-                        style: TextStyle(color: const Color(0xff83848B), fontSize: 12.sp, fontWeight: FontWeight.w400),
+                        style: TextStyle(
+                            color: const Color(0xff83848B),
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400),
                       )
                     ],
                   ),
@@ -271,7 +283,10 @@ class PaymentRow extends StatelessWidget {
                   ),
                   Text(
                     date,
-                    style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: const Color(0xff83848B)),
+                    style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xff83848B)),
                   ),
                   SizedBox(
                     height: 5.h,
@@ -279,13 +294,17 @@ class PaymentRow extends StatelessWidget {
                   cashOut
                       ? Text(
                           "-₹ $amount",
-                          style:
-                              TextStyle(fontWeight: FontWeight.w500, fontSize: 18.sp, color: const Color(0xffE63E3E)),
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18.sp,
+                              color: const Color(0xffE63E3E)),
                         )
                       : Text(
                           "+₹ $amount",
-                          style:
-                              TextStyle(fontWeight: FontWeight.w500, fontSize: 18.sp, color: const Color(0xff23B371)),
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18.sp,
+                              color: const Color(0xff23B371)),
                         )
                 ],
               )

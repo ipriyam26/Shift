@@ -8,6 +8,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:money_goes_brr/home/model/post.dart';
 import 'package:money_goes_brr/user/controller/user.dart';
 import 'package:money_goes_brr/user/views/add_money.dart';
+import 'package:money_goes_brr/user/views/balance.dart';
+import 'package:money_goes_brr/user/views/edit.dart';
 import 'package:money_goes_brr/user/views/profit.dart' as profit;
 import 'package:shimmer/shimmer.dart';
 
@@ -168,12 +170,13 @@ class TabView extends StatelessWidget {
                       decoration: const BoxDecoration(
                           color: Color(0xffB548C6),
                           borderRadius: BorderRadius.all(Radius.circular(15))),
-                      child: Text('\$${data[index].postPrice}',
-                          style: GoogleFonts.roboto(
-                            color: Colors.white,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                          )),
+                      child:
+                          Text('\$${data[index].postPrice.toStringAsFixed(1)}',
+                              style: GoogleFonts.roboto(
+                                color: Colors.white,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                              )),
                     ),
                     Positioned(
                       left: -6.w,
@@ -226,20 +229,27 @@ class BalanceProfit extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GetX<UserController>(builder: (userController) {
-              return ClickableDetails(
-                cost: userController.user.value.currentBalance.balance,
-                title: "Balance",
+              return InkWell(
+                onTap: () {
+                  Get.to(() => BalanceScreen());
+                },
+                child: ClickableDetails(
+                  cost: userController.user.value.currentBalance.balance,
+                  title: "Balance",
+                ),
               );
             }),
-            InkWell(
-              onTap: () {
-                Get.to(() => profit.Profit());
-              },
-              child: ClickableDetails(
-                title: "Profit",
-                cost: userController.user.value.profit.profit,
-              ),
-            )
+            GetX<UserController>(builder: (userController) {
+              return InkWell(
+                onTap: () {
+                  Get.to(() => profit.Profit());
+                },
+                child: ClickableDetails(
+                  title: "Profit",
+                  cost: userController.user.value.profit.profit,
+                ),
+              );
+            })
           ],
         ));
   }
@@ -297,43 +307,45 @@ class PurchaseDetails extends StatelessWidget {
     return Container(
         height: 60.h,
         margin: EdgeInsets.only(top: 28.h, left: 10.w, bottom: 20.h),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CurrentlyOwned(
-                count: controller
-                    .user.value.currentOwned.currentOwnedItems.length),
-            TotalPurchases(
-                count: controller.user.value.history.historyItems.length),
-            InkWell(
-              onTap: () => Get.to(() => AddMoney()),
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  ClipOval(
-                    child: SizedBox(
-                      height: 60.h,
-                      width: 60.w,
-                      child: Image.asset(
-                        'assets/coin.png',
-                        fit: BoxFit.cover,
+        child: GetX<UserController>(builder: (controller) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CurrentlyOwned(
+                  count: controller
+                      .user.value.currentOwned.currentOwnedItems.length),
+              TotalPurchases(
+                  count: controller.user.value.history.historyItems.length),
+              InkWell(
+                onTap: () => Get.to(() => AddMoney()),
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    ClipOval(
+                      child: SizedBox(
+                        height: 60.h,
+                        width: 60.w,
+                        child: Image.asset(
+                          'assets/coin.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    bottom: -10,
-                    right: -10,
-                    child: Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 30.sp,
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ));
+                    Positioned(
+                      bottom: -10,
+                      right: -10,
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 30.sp,
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          );
+        }));
   }
 }
 
@@ -441,7 +453,9 @@ class EditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-        onPressed: () {},
+        onPressed: () {
+          Get.to(() => EditScreen());
+        },
         icon: Icon(
           Icons.edit_location_alt,
           color: Colors.white,
