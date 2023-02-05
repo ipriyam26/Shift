@@ -102,17 +102,17 @@ class History {
 }
 
 class Balance {
-  final double balance;
-  final List<Transactions> transactions;
+  double balance;
+  List<Transactions> transactions;
 
-  const Balance({
+  Balance({
     required this.balance,
     required this.transactions,
   });
 
   factory Balance.fromJson(Map<String, dynamic>? json) {
     return json == null
-        ? const Balance(balance: 0, transactions: [])
+        ? Balance(balance: 0, transactions: [])
         : Balance(
             balance: json['balance'].toDouble(),
             transactions: (json['transactions'] == null)
@@ -121,6 +121,15 @@ class Balance {
                     .map((e) => Transactions.fromJson(e))
                     .toList(),
           );
+  }
+
+  toJson() {
+    return {
+      'balance': balance,
+      'transactions': transactions.isNotEmpty
+          ? transactions.map((e) => e.toJson()).toList()
+          : [],
+    };
   }
 }
 
@@ -179,10 +188,10 @@ class Transactions {
 
   Map<String, dynamic> toJson() {
     return {
-      'transactionId': transactionId,
       'transactionAmount': transactionAmount,
       'transactionDate': transactionDate.microsecondsSinceEpoch,
       'transactionType': transactionType.toString(),
+
     };
   }
 

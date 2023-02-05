@@ -72,6 +72,38 @@ class UserController extends GetxController {
     return File(pickedFile.path);
   }
 
+  Future<bool> addMoney(double n) async {
+    user.value.currentBalance.balance += n;
+    // create transaction
+
+    var transaction = Transactions(
+      transactionAmount: n,
+      transactionType: TransactionType.added,
+      transactionDate: DateTime.now(),
+      transactionId: "",
+    ).toJson();
+
+    transaction.addAll({"userId": user.value.id, "postId": ""});
+
+    Uri transactionUri = Uri.parse("${Constants().baseurl}/transactions/");
+
+    print(jsonEncode({"transaction": transaction}));
+
+    var response = await http.post(transactionUri,
+        body: jsonEncode({"transaction": transaction}));
+    print(response.body);
+
+    user.refresh();
+    // send to server
+    Uri uri = Uri.parse(Constants().baseurl + "/users/" + user.value.id);
+    http.put(uri,
+        body: jsonEncode({
+          "currentBalance": user.value.currentBalance.toJson(),
+        }));
+
+    return true;
+  }
+
   Future<String> uploadImage(File image) async {
     var request =
         http.MultipartRequest(Constants().post, Uri.parse(Constants().posturl));
