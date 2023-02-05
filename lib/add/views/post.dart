@@ -199,7 +199,7 @@ class PostScreen extends StatelessWidget {
                                   child: TextField(
                                     maxLines: 1,
                                     onChanged: (value) {
-                                      addController.priceTag.value = value;
+                                      addController.priceTag.value = double.parse(value);
                                       addController.priceTag.refresh();
                                     },
                                     keyboardType: TextInputType.number,

@@ -50,6 +50,9 @@ class Saved {
 
   factory Saved.fromJson(Map<String, dynamic> json) {
     List<Post> savedItems = [];
+    if (json == null) {
+      return const Saved(savedItems: []);
+    }
     for (var item in json['savedItems']) {
       savedItems.add(Post.fromJson(item));
     }
@@ -59,15 +62,18 @@ class Saved {
   }
 }
 
-
 class CurrentOwned {
   final List<Post> currentOwnedItems;
 
   const CurrentOwned({
     required this.currentOwnedItems,
   });
-  factory CurrentOwned.fromJson(Map<String, dynamic> json) {
+  factory CurrentOwned.fromJson(Map<String, dynamic>? json) {
     List<Post> currentOwnedItems = [];
+    if (json == null) {
+      return const CurrentOwned(currentOwnedItems: []);
+    }
+
     for (var item in json['currentOwnedItems']) {
       currentOwnedItems.add(Post.fromJson(item));
     }
@@ -83,8 +89,11 @@ class History {
   const History({
     required this.historyItems,
   });
-  factory History.fromJson(List<dynamic> json) {
+  factory History.fromJson(List<dynamic>? json) {
     List<Post> history = [];
+    if (json == null) {
+      return const History(historyItems: []);
+    }
     for (var item in json) {
       history.add(Post.fromJson(item));
     }
@@ -101,13 +110,17 @@ class Balance {
     required this.transactions,
   });
 
-  factory Balance.fromJson(Map<String, dynamic> json) {
-    return Balance(
-      balance: json['balance'].toDouble(),
-      transactions: (json['transactions'] as List)
-          .map((e) => Transactions.fromJson(e))
-          .toList(),
-    );
+  factory Balance.fromJson(Map<String, dynamic>? json) {
+    return json == null
+        ? const Balance(balance: 0, transactions: [])
+        : Balance(
+            balance: json['balance'].toDouble(),
+            transactions: (json['transactions'] == null)
+                ? []
+                : (json['transactions'] as List)
+                    .map((e) => Transactions.fromJson(e))
+                    .toList(),
+          );
   }
 }
 
@@ -130,6 +143,15 @@ class PostTransaction {
       sale: Transactions.fromJson(json['sale']),
       isSold: json['isSold'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'post': post.toJson(),
+      'purchase': purchase.toJson(),
+      'sale': sale.toJson(),
+      'isSold': isSold,
+    };
   }
 }
 
@@ -155,6 +177,15 @@ class Transactions {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'transactionId': transactionId,
+      'transactionAmount': transactionAmount,
+      'transactionDate': transactionDate.microsecondsSinceEpoch,
+      'transactionType': transactionType.toString(),
+    };
+  }
+
   static TransactionType _transactionTypeFromJson(String transactionType) {
     switch (transactionType) {
       case 'purchase':
@@ -167,9 +198,7 @@ class Transactions {
         return TransactionType.cashedOut;
     }
   }
-
 }
-
 
 enum TransactionType { added, bought, sold, cashedOut }
 
@@ -182,13 +211,14 @@ class Profit {
     required this.profit,
     required this.transactions,
   });
-  factory Profit.fromJson(Map<String, dynamic> json) {
-    return Profit(
-      profit: json['profit'].toDouble(),
-      transactions: (json['transactions'] as List)
-          .map((transaction) => PostTransaction.fromJson(transaction))
-          .toList(),
-    );
+  factory Profit.fromJson(Map<String, dynamic>? json) {
+    return json == null
+        ? const Profit(profit: 0.0, transactions: [])
+        : Profit(
+            profit: json['profit'].toDouble(),
+            transactions: (json['transactions'] as List)
+                .map((transaction) => PostTransaction.fromJson(transaction))
+                .toList(),
+          );
   }
-
 }
